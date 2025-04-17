@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_ic"
+        android:title="@string/home"
+        app:itemIconTint="@drawable/bottom_nav_item_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_item_color_selector" />
+
+    <item
+        android:id="@+id/groupChat"
+        android:icon="@drawable/user_home"
+        android:title="GroupChat"
+        app:itemIconTint="@drawable/bottom_nav_item_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_item_color_selector" />
+
+    <item
+        android:id="@+id/upload"
+        android:icon="@drawable/bag_ic"
+        android:title="Upload"
+        app:itemIconTint="@drawable/bottom_nav_item_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_item_color_selector" />
+
+    <item
+        android:id="@+id/notications"
+        android:icon="@drawable/bag_ic"
+        android:title="Notifications"
+        app:itemIconTint="@drawable/bottom_nav_item_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_item_color_selector" />
+
+    <item
+        android:id="@+id/menu"
+        android:icon="@drawable/menu"
+        android:title="Profile"
+        app:itemIconTint="@drawable/bottom_nav_item_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_item_color_selector" />
+
+
+</menu>

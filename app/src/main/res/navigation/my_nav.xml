@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@+id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mudiraj.mudirajfoundation.Fragments.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home"/>
+
+    <fragment
+        android:id="@+id/gropChatFragment"
+        android:name="com.mudiraj.mudirajfoundation.Fragments.GroupChatFragment"
+        android:label="GroupChat"
+        tools:layout="@layout/fragment_group"/>
+
+    <fragment
+        android:id="@+id/uploadFragment"
+        android:name="com.mudiraj.mudirajfoundation.Fragments.UploadFragment"
+        android:label="Upload"
+        tools:layout="@layout/fragment_upload"/>
+
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.mudiraj.mudirajfoundation.Fragments.NotificationsFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_notifications"/>
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.mudiraj.mudirajfoundation.Fragments.MenuFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_menu"/>
+
+</navigation>

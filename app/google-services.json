@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "741855085910",
+    "project_id": "villagevegetables-b6b8c",
+    "storage_bucket": "villagevegetables-b6b8c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741855085910:android:dad7e346d8f454b703c2f7",
+        "android_client_info": {
+          "package_name": "com.mudiraj.mudirajfoundation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2fOXg2hjuqG7d1l15jtvhzO3Thg8jKPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
