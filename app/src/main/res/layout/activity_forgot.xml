@@ -23,7 +23,7 @@
                     android:id="@+id/linearBack"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:background="@drawable/round_back"
+                    android:background="@drawable/roundedge_red"
                     android:gravity="center"
                     android:orientation="horizontal">
                     <androidx.appcompat.widget.AppCompatImageView

@@ -82,15 +82,9 @@ class MenuFragment : Fragment() ,View.OnClickListener{
             R.id.linearProfile -> {
                 val animations = ViewController.animation()
                 view.startAnimation(animations)
-                if (userId.equals("")){
-                    val intent = Intent(requireActivity(), LoginActivity::class.java)
-                    startActivity(intent)
-                    requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
-                }else{
-                    val intent = Intent(requireActivity(), EditProfileActivity::class.java)
-                    startActivity(intent)
-                    requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
-                }
+                val intent = Intent(requireActivity(), EditProfileActivity::class.java)
+                startActivity(intent)
+                requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
             }
             R.id.linearCart -> {
                 val animations = ViewController.animation()

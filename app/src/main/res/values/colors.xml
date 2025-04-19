@@ -42,4 +42,5 @@
     <color name="bgWhite">#ffffff</color>
     <color name="lemonGreen">#ADF702</color>
     <color name="lightRed">#FF7F7F</color>
+    <color name="orange">#FFC300</color>
 </resources>

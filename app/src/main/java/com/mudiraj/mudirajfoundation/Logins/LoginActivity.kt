@@ -120,8 +120,7 @@ class LoginActivity : AppCompatActivity() {
                 apiServices.loginApi(
                     getString(R.string.api_key),
                     email,
-                    password,
-                    token
+                    password
                 )
 
             call.enqueue(object : Callback<LoginModel> {
@@ -134,12 +133,11 @@ class LoginActivity : AppCompatActivity() {
                     try {
                         if (response.isSuccessful) {
 
-                            if (response.body()?.code==1){
-                                Preferences.saveStringValue(this@LoginActivity, Preferences.userId,response.body()?.response!!.customer_id.toString())
+                            if (response.body()?.status == true){
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.userId,response.body()?.response!!.user_id.toString())
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.name,response.body()?.response!!.full_name.toString())
-                                Preferences.saveStringValue(this@LoginActivity, Preferences.mobileNumber,response.body()?.response!!.mobile_number.toString())
-                                Preferences.saveStringValue(this@LoginActivity, Preferences.address,response.body()?.response!!.address.toString())
-                                Preferences.saveStringValue(this@LoginActivity, Preferences.email,response.body()?.response!!.email_id.toString())
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.mobileNumber,response.body()?.response!!.phone.toString())
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.email,response.body()?.response!!.email.toString())
 
                                 val intent = Intent(this@LoginActivity, DashBoardActivity::class.java)
                                 startActivity(intent)

@@ -41,22 +41,21 @@ import retrofit2.http.FormUrlEncoded
 interface ApiInterface {
 
     @FormUrlEncoded
-    @POST("user_resistration")
+    @POST("registration")
     fun registerApi(
         @Field("api_key") apiKey: String,
         @Field("full_name") fullName: String,
-        @Field("mobile_number") mobileNumber: String,
-        @Field("email_id") emailId: String,
-        @Field("pswrd") password: String,
+        @Field("phone") mobileNumber: String,
+        @Field("email") emailId: String,
+        @Field("password") password: String,
     ): Call<RegisterModel>
 
     @FormUrlEncoded
-    @POST("user_login")
+    @POST("login")
     fun loginApi(
         @Field("api_key") apiKey: String,
-        @Field("username") username: String,
-        @Field("pswrd") password: String,
-        @Field("device_token") deviceToken: String
+        @Field("email") username: String,
+        @Field("password") password: String
     ): Call<LoginModel>
 
     @FormUrlEncoded
@@ -182,10 +181,10 @@ interface ApiInterface {
     @POST("update_profile")
     fun updateProfileApi(
         @Field("api_key") apiKey: String,
-        @Field("customer_id") customerId: String,
+        @Field("user_id") customerId: String,
         @Field("full_name") fullName: String,
-        @Field("mobile_number") mobileNumber: String,
-        @Field("email_id") emailId: String,
+        @Field("phone") mobileNumber: String,
+        @Field("email") emailId: String,
     ): Call<ProfileModel>
 
     @FormUrlEncoded

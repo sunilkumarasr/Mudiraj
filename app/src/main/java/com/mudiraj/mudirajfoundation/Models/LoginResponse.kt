@@ -3,20 +3,19 @@ package com.mudiraj.mudirajfoundation.Models
 import com.google.gson.annotations.SerializedName
 
 data class LoginModel(
-    @SerializedName("Status") val status: Boolean,
-    @SerializedName("Message") val message: String,
-    @SerializedName("success") val success: Boolean,
-    @SerializedName("order_id") val order_id: String,
-    @SerializedName("Response") val response: LoginResponse,
-    @SerializedName("code") val code: Int
+    @SerializedName("status") val status: Boolean,
+    @SerializedName("message") val message: String,
+    @SerializedName("data") val response: LoginResponse,
 )
 data class LoginResponse(
-    @SerializedName("customer_id") val customer_id: Int,
-    @SerializedName("customer_category") val customer_category: Int,
+    @SerializedName("id") val id: String,
+    @SerializedName("role") val role: String,
+    @SerializedName("user_id") val user_id: String,
     @SerializedName("full_name") val full_name: String,
-    @SerializedName("mobile_number") val mobile_number: String,
-    @SerializedName("address") val address: String,
-    @SerializedName("email_id") val email_id: String,
-    @SerializedName("state") val state: String,
-    @SerializedName("city") val city: String,
+    @SerializedName("email") val email: String,
+    @SerializedName("password") val password: String,
+    @SerializedName("password_hit") val password_hit: String,
+    @SerializedName("phone") val phone: String,
+    @SerializedName("image") val image: String,
+    @SerializedName("status") val status: String,
 )

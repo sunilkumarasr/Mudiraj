@@ -61,5 +61,16 @@
         <item name="android:background">@drawable/bottom_topup_round</item>
     </style>
 
+    <style name="BottomNavTextAppearanceActive" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item> <!-- Active text size -->
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="BottomNavTextAppearanceInactive" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item> <!-- Inactive text size -->
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+
 
 </resources>

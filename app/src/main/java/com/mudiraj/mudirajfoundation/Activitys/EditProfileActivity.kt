@@ -137,6 +137,7 @@ class EditProfileActivity : AppCompatActivity() {
                             Preferences.saveStringValue(this@EditProfileActivity, Preferences.mobileNumber,binding.mobileEdit.text.toString())
                             Preferences.saveStringValue(this@EditProfileActivity, Preferences.email,binding.emailEdit.text.toString())
 
+                            ViewController.customToast(applicationContext, "success")
                             val intent = Intent(this@EditProfileActivity, DashBoardActivity::class.java)
                             startActivity(intent)
                             finish()

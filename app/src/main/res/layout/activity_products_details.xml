@@ -163,7 +163,7 @@
                                     android:id="@+id/linearInStock"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/round_light_green">
+                                    android:background="@drawable/round_light_yellow">
                                     <androidx.appcompat.widget.AppCompatTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -209,7 +209,7 @@
                                 android:id="@+id/txtQuantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/round_light_green"
+                                android:background="@drawable/round_light_yellow"
                                 android:fontFamily="@font/teachers_medium"
                                 android:padding="8dp"
                                 android:text="Gm"

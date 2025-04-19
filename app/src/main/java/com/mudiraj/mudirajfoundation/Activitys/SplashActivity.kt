@@ -28,14 +28,14 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         ViewController.changeStatusBarColor(
             this,
-            ContextCompat.getColor(this, R.color.white),
+            ContextCompat.getColor(this, R.color.black),
             false
         )
-
 
         inIts()
 
     }
+
 
     private fun inIts() {
 
@@ -61,6 +61,7 @@ class SplashActivity : AppCompatActivity() {
         }, 3000)
     }
 
+
     private fun LogoAnimation() {
         val splashLogo: LinearLayout = findViewById(R.id.imgLogo)
         // Create ObjectAnimators for the different effects
@@ -83,6 +84,7 @@ class SplashActivity : AppCompatActivity() {
         animatorSet.start()
     }
 
+
     private fun setLocale(languageCode: String) {
         val locale = Locale(languageCode)
         Locale.setDefault(locale)
@@ -91,9 +93,11 @@ class SplashActivity : AppCompatActivity() {
         resources.updateConfiguration(config, resources.displayMetrics)
     }
 
+
     override fun onResume() {
         super.onResume()
         inIts()
     }
+
 
 }

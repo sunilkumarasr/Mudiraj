@@ -121,7 +121,6 @@ class RegisterActivity : AppCompatActivity() {
                     email,
                     password
                 )
-
             call.enqueue(object : Callback<RegisterModel> {
                 override fun onResponse(
                     call: Call<RegisterModel>,
@@ -132,6 +131,7 @@ class RegisterActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
 
                             if (response.body()?.status == true){
+                                ViewController.customToast(applicationContext, "success")
                                 val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                                 startActivity(intent)
                                 finish()
