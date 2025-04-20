@@ -39,9 +39,11 @@ class EditProfileActivity : AppCompatActivity() {
         val name = Preferences.loadStringValue(this@EditProfileActivity, Preferences.name, "")
         val mobileNumber = Preferences.loadStringValue(this@EditProfileActivity, Preferences.mobileNumber, "")
         val email = Preferences.loadStringValue(this@EditProfileActivity, Preferences.email, "")
+        val address = Preferences.loadStringValue(this@EditProfileActivity, Preferences.address, "")
         binding.nameEdit.setText(name.toString())
         binding.mobileEdit.setText(mobileNumber.toString())
         binding.emailEdit.setText(email.toString())
+        binding.addressEdit.setText(address.toString())
 
         if (!ViewController.noInterNetConnectivity(applicationContext)) {
             ViewController.customToast(applicationContext, "Please check your connection ")
@@ -95,6 +97,7 @@ class EditProfileActivity : AppCompatActivity() {
         val name = binding.nameEdit.text?.trim().toString()
         val email = binding.emailEdit.text?.trim().toString()
         val mobile = binding.mobileEdit.text?.trim().toString()
+        val address = binding.addressEdit.text?.trim().toString()
         ViewController.hideKeyBoard(this@EditProfileActivity )
 
         if (name.isEmpty()) {
@@ -110,6 +113,11 @@ class EditProfileActivity : AppCompatActivity() {
             return
         }
 
+        if (address.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter address")
+            return
+        }
+
         if (!ViewController.validateMobile(mobile)) {
             ViewController.customToast(applicationContext, "Enter valid mobile number")
         } else {
@@ -122,7 +130,8 @@ class EditProfileActivity : AppCompatActivity() {
                     userId.toString(),
                     name,
                     mobile,
-                    email
+                    email,
+                    address
                 )
 
             call.enqueue(object : Callback<ProfileModel> {
@@ -136,6 +145,7 @@ class EditProfileActivity : AppCompatActivity() {
                             Preferences.saveStringValue(this@EditProfileActivity, Preferences.name,binding.nameEdit.text.toString())
                             Preferences.saveStringValue(this@EditProfileActivity, Preferences.mobileNumber,binding.mobileEdit.text.toString())
                             Preferences.saveStringValue(this@EditProfileActivity, Preferences.email,binding.emailEdit.text.toString())
+                            Preferences.saveStringValue(this@EditProfileActivity, Preferences.address,binding.addressEdit.text.toString())
 
                             ViewController.customToast(applicationContext, "success")
                             val intent = Intent(this@EditProfileActivity, DashBoardActivity::class.java)

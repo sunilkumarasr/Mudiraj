@@ -47,6 +47,7 @@ interface ApiInterface {
         @Field("full_name") fullName: String,
         @Field("phone") mobileNumber: String,
         @Field("email") emailId: String,
+        @Field("full_address") address: String,
         @Field("password") password: String,
     ): Call<RegisterModel>
 
@@ -185,6 +186,7 @@ interface ApiInterface {
         @Field("full_name") fullName: String,
         @Field("phone") mobileNumber: String,
         @Field("email") emailId: String,
+        @Field("full_address") full_address: String,
     ): Call<ProfileModel>
 
     @FormUrlEncoded

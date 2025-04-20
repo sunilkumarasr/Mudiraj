@@ -13,6 +13,7 @@ data class LoginResponse(
     @SerializedName("user_id") val user_id: String,
     @SerializedName("full_name") val full_name: String,
     @SerializedName("email") val email: String,
+    @SerializedName("full_address") val full_address: String,
     @SerializedName("password") val password: String,
     @SerializedName("password_hit") val password_hit: String,
     @SerializedName("phone") val phone: String,

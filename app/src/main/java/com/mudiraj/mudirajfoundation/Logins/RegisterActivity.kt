@@ -81,9 +81,11 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private fun registerApi() {
+
         val name = binding.nameEdit.text?.trim().toString()
         val email = binding.emailEdit.text?.trim().toString()
         val mobile = binding.mobileEdit.text?.trim().toString()
+        val address = binding.addressEdit.text?.trim().toString()
         val password = binding.passwordEdit.text?.trim().toString()
 
         ViewController.hideKeyBoard(this@RegisterActivity )
@@ -98,6 +100,10 @@ class RegisterActivity : AppCompatActivity() {
         }
         if (mobile.isEmpty()) {
             ViewController.customToast(applicationContext, "Enter Mobile Number")
+            return
+        }
+        if (address.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Address")
             return
         }
         if (password.isEmpty()) {
@@ -119,6 +125,7 @@ class RegisterActivity : AppCompatActivity() {
                     name,
                     mobile,
                     email,
+                    address,
                     password
                 )
             call.enqueue(object : Callback<RegisterModel> {

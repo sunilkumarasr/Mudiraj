@@ -138,6 +138,7 @@ class LoginActivity : AppCompatActivity() {
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.name,response.body()?.response!!.full_name.toString())
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.mobileNumber,response.body()?.response!!.phone.toString())
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.email,response.body()?.response!!.email.toString())
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.address,response.body()?.response!!.full_address.toString())
 
                                 val intent = Intent(this@LoginActivity, DashBoardActivity::class.java)
                                 startActivity(intent)
