@@ -46,7 +46,7 @@ object RequestInterceptor : Interceptor {
         val requestBuilder = request.newBuilder()
             .header("Content-Type", "application/json")
         // Uncomment and set your API key if needed
-        //.header("api_key", API_KEY)
+//        .header("api_key", "MF_7s736V2J2iB549214s40i3Lz77I0297")
         return chain.proceed(requestBuilder.build())
     }
 }

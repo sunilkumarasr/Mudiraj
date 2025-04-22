@@ -95,13 +95,13 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun loginApi() {
-        val email = binding.emailEdit.text?.trim().toString()
+        val mobile_ = binding.mobileEdit.text?.trim().toString()
         val password = binding.passwordEdit.text?.trim().toString()
 
         ViewController.hideKeyBoard(this@LoginActivity )
 
-        if (email.isEmpty()) {
-            ViewController.customToast(applicationContext, "Enter email")
+        if (mobile_.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter mobile")
             return
         }
         if (password.isEmpty()) {
@@ -109,8 +109,8 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        if (!ViewController.validateEmail(email)) {
-            ViewController.customToast(applicationContext, "Enter valid email")
+        if (!ViewController.validateMobile(mobile_)) {
+            ViewController.customToast(applicationContext, "Enter valid mobile number")
         } else {
             binding.txtButton.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
@@ -119,7 +119,7 @@ class LoginActivity : AppCompatActivity() {
             val call =
                 apiServices.loginApi(
                     getString(R.string.api_key),
-                    email,
+                    mobile_,
                     password
                 )
 

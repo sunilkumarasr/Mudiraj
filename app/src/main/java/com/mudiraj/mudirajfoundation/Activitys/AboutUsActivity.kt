@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Html
 import android.util.Log
 import android.view.View
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.mudiraj.mudirajfoundation.Api.RetrofitClient
 import com.mudiraj.mudirajfoundation.Config.ViewController
@@ -39,9 +40,12 @@ class AboutUsActivity : AppCompatActivity() {
         if (!ViewController.noInterNetConnectivity(applicationContext)) {
             ViewController.showToast(applicationContext, "Please check your connection ")
         } else {
-            aboutUsApi()
+            //aboutUsApi()
         }
 
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.webViewClient = WebViewClient()
+        binding.webView.loadUrl(RetrofitClient.URL+"about.html")
 
     }
 

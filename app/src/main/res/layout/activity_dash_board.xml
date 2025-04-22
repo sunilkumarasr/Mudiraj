@@ -22,6 +22,7 @@
             android:id="@+id/bottom_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="2dp"
             app:cardElevation="5dp">
@@ -32,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:background="@color/white"
                 app:itemActiveIndicatorStyle="@drawable/bottom_nav_item_background"
                 app:itemBackground="@color/white"
                 app:itemIconTint="@color/bottom_bg"

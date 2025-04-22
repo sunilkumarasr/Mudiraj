@@ -31,14 +31,19 @@ import com.mudiraj.mudirajfoundation.Models.SettingsModel
 import com.mudiraj.mudirajfoundation.Models.ShippingPolicyModel
 import com.mudiraj.mudirajfoundation.Models.TermsAndConditionsModel
 import com.mudiraj.mudirajfoundation.Models.UpdateCartResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Multipart
+import retrofit2.http.Part
 
 
 interface ApiInterface {
+
 
     @FormUrlEncoded
     @POST("registration")
@@ -47,6 +52,7 @@ interface ApiInterface {
         @Field("full_name") fullName: String,
         @Field("phone") mobileNumber: String,
         @Field("email") emailId: String,
+        @Field("business_name") business_name: String,
         @Field("full_address") address: String,
         @Field("password") password: String,
     ): Call<RegisterModel>
@@ -55,7 +61,7 @@ interface ApiInterface {
     @POST("login")
     fun loginApi(
         @Field("api_key") apiKey: String,
-        @Field("email") username: String,
+        @Field("phone") phone: String,
         @Field("password") password: String
     ): Call<LoginModel>
 
@@ -311,10 +317,10 @@ interface ApiInterface {
     ): Call<ContactUsModel>
 
     @FormUrlEncoded
-    @POST("deleteaccount")
+    @POST("account_delete")
     fun deleteAccountApi(
         @Field("api_key") apiKey: String,
-        @Field("customer_id") customerId: String,
+        @Field("user_id") customerId: String,
     ): Call<DeleteModel>
 
 }

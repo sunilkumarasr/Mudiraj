@@ -4,7 +4,7 @@
     <!-- Top line for the selected item -->
     <item android:left="0dp" android:right="0dp" android:top="0dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/colorPrimary" /> <!-- Color for the top line -->
+            <solid android:color="@color/white" /> <!-- Color for the top line -->
             <size android:height="2dp" /> <!-- Thickness of the top line -->
         </shape>
     </item>

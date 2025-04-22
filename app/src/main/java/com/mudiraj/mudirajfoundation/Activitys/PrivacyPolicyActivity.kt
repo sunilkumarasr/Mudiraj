@@ -48,7 +48,7 @@ class PrivacyPolicyActivity : AppCompatActivity() {
 
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.webViewClient = WebViewClient()
-        binding.webView.loadUrl(RetrofitClient.URL+"Privacy-Policy.php")
+        binding.webView.loadUrl(RetrofitClient.URL+"privacy.html")
 
     }
 

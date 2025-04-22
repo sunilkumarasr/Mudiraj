@@ -3,6 +3,6 @@ package com.mudiraj.mudirajfoundation.Models
 import com.google.gson.annotations.SerializedName
 
 data class DeleteModel(
-    @SerializedName("Status") val status: Boolean,
-    @SerializedName("Message") val message: String,
+    @SerializedName("status") val status: Boolean,
+    @SerializedName("message") val message: String,
 )

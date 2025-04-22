@@ -47,7 +47,7 @@ class TermsAndConditionsActivity : AppCompatActivity() {
 
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.webViewClient = WebViewClient()
-        binding.webView.loadUrl(RetrofitClient.URL+"Terms_conditions.php")
+        binding.webView.loadUrl(RetrofitClient.URL+"terms.html")
 
 
 
