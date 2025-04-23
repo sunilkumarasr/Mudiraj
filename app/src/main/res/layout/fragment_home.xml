@@ -10,6 +10,8 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_above="@+id/bottomBanner"
             android:background="@color/whitebg">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -191,7 +193,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Users:10900"
+                            android:text="Total Users:155903"
                             android:layout_gravity="end"
                             android:layout_marginEnd="10dp"
                             android:textColor="@color/selectedRed"
@@ -380,7 +382,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" VIP "
+                        android:text=" VVIP "
                         android:padding="3dp"
                         android:background="@drawable/round_black"
                         android:textColor="@color/black"
@@ -532,7 +534,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" VVIP "
+                        android:text=" VIP "
                         android:padding="3dp"
                         android:background="@drawable/round_black"
                         android:textColor="@color/black"
@@ -2250,6 +2252,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <ImageView
+            android:id="@+id/bottomBanner"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:scaleType="fitXY"

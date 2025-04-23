@@ -12,11 +12,15 @@ android {
         applicationId = "com.mudiraj.mudirajfoundation"
         minSdk = 25
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.0.3"
+        versionCode = 1
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+//    Mudiraj
+//    Password: Mudiraj@#9900
+//    alias: key0
 
     buildTypes {
         release {
