@@ -13,12 +13,17 @@ import android.provider.MediaStore
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.mudiraj.mudirajfoundation.Api.RetrofitClient
 import com.mudiraj.mudirajfoundation.Config.ViewController
 import com.mudiraj.mudirajfoundation.Models.RegisterModel
+import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.R
 import com.mudiraj.mudirajfoundation.databinding.ActivityRegisterBinding
 import okhttp3.MultipartBody
@@ -26,7 +31,6 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -35,6 +39,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     var passwordView: Boolean = false
+    var selectedState: String = ""
+    var selectedConstituency: String = ""
 
 
     //image selection
@@ -95,6 +101,12 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun inIts() {
 
+        if (!ViewController.noInterNetConnectivity(applicationContext)) {
+            ViewController.customToast(applicationContext, "Please check your connection ")
+        } else {
+            StateListApi()
+        }
+
 
         binding.relativeProfile.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
@@ -149,8 +161,25 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 registerApi()
             }
-
         }
+
+
+        binding.StateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                selectedState = parent.getItemAtPosition(position).toString()
+                ConstituencyListApi(selectedState)
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        binding.ConstituenciesSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                selectedConstituency = parent.getItemAtPosition(position).toString()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+
+
+
     }
 
 
@@ -206,7 +235,9 @@ class RegisterActivity : AppCompatActivity() {
                     email,
                     businessName,
                     address,
-                    password
+                    password,
+                    selectedState,
+                    selectedConstituency
                 )
             call.enqueue(object : Callback<RegisterModel> {
                 override fun onResponse(
@@ -241,6 +272,90 @@ class RegisterActivity : AppCompatActivity() {
             })
 
         }
+    }
+
+
+    private fun StateListApi() {
+            val apiServices = RetrofitClient.apiInterface
+            val call =
+                apiServices.StateListApi(
+                    getString(R.string.api_key)
+                )
+            call.enqueue(object : Callback<StateModel> {
+                override fun onResponse(
+                    call: Call<StateModel>,
+                    response: Response<StateModel>
+                ) {
+                    ViewController.hideLoading()
+                    try {
+                        if (response.isSuccessful) {
+
+                            val stateList = response.body()?.response
+                            if (response.body()?.status == true && stateList != null) {
+                                val stateNames = stateList.map { it.name }
+
+                                val adapter = ArrayAdapter(
+                                    this@RegisterActivity,
+                                    android.R.layout.simple_spinner_item,
+                                    stateNames
+                                )
+                                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                                findViewById<Spinner>(R.id.StateSpinner).adapter = adapter
+                            }
+
+                        }
+                    } catch (e: NullPointerException) {
+                        e.printStackTrace()
+                    }
+                }
+
+                override fun onFailure(call: Call<StateModel>, t: Throwable) {
+                   Log.e("terror",t.message.toString())
+                }
+            })
+
+
+    }
+    private fun ConstituencyListApi(selectedState: String) {
+        val apiServices = RetrofitClient.apiInterface
+        val call =
+            apiServices.ConstituencyListApi(
+                getString(R.string.api_key)
+            )
+        call.enqueue(object : Callback<StateModel> {
+            override fun onResponse(
+                call: Call<StateModel>,
+                response: Response<StateModel>
+            ) {
+                ViewController.hideLoading()
+                try {
+                    if (response.isSuccessful) {
+
+                        val stateList = response.body()?.response
+                        if (response.body()?.status == true && stateList != null) {
+                            val constituenciesNames = stateList.map { it.name }
+
+                            val adapter = ArrayAdapter(
+                                this@RegisterActivity,
+                                android.R.layout.simple_spinner_item,
+                                constituenciesNames
+                            )
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                            findViewById<Spinner>(R.id.ConstituenciesSpinner).adapter = adapter
+                        }
+
+                    }
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(call: Call<StateModel>, t: Throwable) {
+                Log.e("terror",t.message.toString())
+            }
+        })
+
+
     }
 
     private fun getRealPathFromURI(uri: Uri): String {

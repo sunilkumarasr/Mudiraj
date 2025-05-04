@@ -77,7 +77,7 @@ class DeleteAccountActivity : AppCompatActivity() {
                 binding.progressBar.visibility = View.GONE
                 try {
                     if (response.isSuccessful) {
-
+                        Toast.makeText(this@DeleteAccountActivity, "Account Deleted Successfully", Toast.LENGTH_SHORT).show()
                         Preferences.deleteSharedPreferences(this@DeleteAccountActivity)
                         startActivity(Intent(this@DeleteAccountActivity, LoginActivity::class.java))
                         finishAffinity()

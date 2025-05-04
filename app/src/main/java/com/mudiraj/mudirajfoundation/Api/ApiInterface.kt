@@ -20,6 +20,7 @@ import com.mudiraj.mudirajfoundation.Models.DeleteModel
 import com.mudiraj.mudirajfoundation.Models.FavouriteModel
 import com.mudiraj.mudirajfoundation.Models.ForgotModel
 import com.mudiraj.mudirajfoundation.Models.LoginModel
+import com.mudiraj.mudirajfoundation.Models.MemberShipListModel
 import com.mudiraj.mudirajfoundation.Models.OrderHistoryModel
 import com.mudiraj.mudirajfoundation.Models.PlaceorderModel
 import com.mudiraj.mudirajfoundation.Models.PrivacyPolicyModel
@@ -29,6 +30,7 @@ import com.mudiraj.mudirajfoundation.Models.RefundPolicyModel
 import com.mudiraj.mudirajfoundation.Models.RegisterModel
 import com.mudiraj.mudirajfoundation.Models.SettingsModel
 import com.mudiraj.mudirajfoundation.Models.ShippingPolicyModel
+import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.Models.TermsAndConditionsModel
 import com.mudiraj.mudirajfoundation.Models.UpdateCartResponse
 import okhttp3.MultipartBody
@@ -55,7 +57,21 @@ interface ApiInterface {
         @Field("business_name") business_name: String,
         @Field("full_address") address: String,
         @Field("password") password: String,
+        @Field("state") state: String,
+        @Field("constituencies") constituencies: String,
     ): Call<RegisterModel>
+
+    @FormUrlEncoded
+    @POST("state_list")
+    fun StateListApi(
+        @Field("api_key") apiKey: String
+    ): Call<StateModel>
+
+    @FormUrlEncoded
+    @POST("constituencies_list")
+    fun ConstituencyListApi(
+        @Field("api_key") apiKey: String
+    ): Call<StateModel>
 
     @FormUrlEncoded
     @POST("login")
@@ -71,6 +87,14 @@ interface ApiInterface {
         @Field("api_key") apiKey: String,
         @Field("email_id") username: String
     ): Call<ForgotModel>
+
+
+    @FormUrlEncoded
+    @POST("membership_list")
+    fun memberShipListApi(
+        @Field("api_key") apiKey: String
+    ): Call<MemberShipListModel>
+
 
     @FormUrlEncoded
     @POST("settings")

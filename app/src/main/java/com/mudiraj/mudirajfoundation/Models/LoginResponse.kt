@@ -11,6 +11,8 @@ data class LoginResponse(
     @SerializedName("id") val id: String,
     @SerializedName("role") val role: String,
     @SerializedName("user_id") val user_id: String,
+    @SerializedName("state") val state: String,
+    @SerializedName("constituencies") val constituencies: String,
     @SerializedName("full_name") val full_name: String,
     @SerializedName("email") val email: String,
     @SerializedName("full_address") val full_address: String,

@@ -10,6 +10,8 @@ object Preferences {
 
     const val LOGINCHECK = "LOGINCHECK"
     const val userId = "userId"
+    const val state = "state"
+    const val constituencies = "constituencies"
     const val name = "name"
     const val mobileNumber = "mobileNumber"
     const val address = "address"

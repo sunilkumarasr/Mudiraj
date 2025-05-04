@@ -94,13 +94,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/editbox_round">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/user_c"
-                    app:tint="@color/darkGray"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/nameEdit"
                     android:layout_width="match_parent"
@@ -130,13 +124,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/editbox_round">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/email"
-                    app:tint="@color/darkGray"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/emailEdit"
                     android:layout_width="match_parent"
@@ -167,13 +155,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/editbox_round">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/call"
-                    app:tint="@color/darkGray"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/mobileEdit"
                     android:layout_width="match_parent"
@@ -205,13 +187,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/editbox_round">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/email"
-                    app:tint="@color/darkGray"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/BusinessNameEdit"
                     android:layout_width="match_parent"
@@ -224,6 +200,54 @@
                     android:hint="Enter business name"
                     android:fontFamily="@font/teachers_regular"
                     android:textColorHint="@color/hintcolor"/>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="State"
+                android:textColor="@color/txtLight"
+                android:fontFamily="@font/teachers_medium"
+                android:textSize="14sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/editbox_round">
+                <Spinner
+                    android:id="@+id/StateSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="15sp"
+                    android:singleLine="true"/>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Constituency"
+                android:textColor="@color/txtLight"
+                android:fontFamily="@font/teachers_medium"
+                android:textSize="14sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/editbox_round">
+                <Spinner
+                    android:id="@+id/ConstituenciesSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="15sp"
+                    android:singleLine="true"/>
             </LinearLayout>
 
 
@@ -244,13 +268,7 @@
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
                 android:background="@drawable/editbox_round">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:gravity="start"
-                    android:src="@drawable/email"
-                    app:tint="@color/darkGray"
-                    android:layout_marginStart="10dp"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/addressEdit"
                     android:layout_width="match_parent"
@@ -280,13 +298,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/editbox_round">
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/password_ic"
-                    app:tint="@color/darkGray"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp"/>
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/passwordEdit"
                     android:layout_width="0dp"

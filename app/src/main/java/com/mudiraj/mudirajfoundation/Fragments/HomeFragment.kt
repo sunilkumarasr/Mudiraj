@@ -21,11 +21,20 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.os.Handler
 import android.os.Looper
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.mudiraj.mudirajfoundation.Activitys.MemberDetailsActivity
+import com.mudiraj.mudirajfoundation.Adapters.HomeMembersAdapter
+import com.mudiraj.mudirajfoundation.Models.MemberShipListModel
+import com.mudiraj.mudirajfoundation.Models.MemberShipListResponse
+import com.mudiraj.mudirajfoundation.Models.StateModel
 
 
 class HomeFragment : Fragment() {
@@ -57,7 +66,7 @@ class HomeFragment : Fragment() {
             ViewController.showToast(requireActivity(), "Please check your connection ")
             return
         } else {
-
+            memberShipListApi()
         }
 
         binding.linearWhatsApp.setOnClickListener {
@@ -173,9 +182,54 @@ class HomeFragment : Fragment() {
             }
         }
 
-
     }
 
+    private fun memberShipListApi() {
+        val apiServices = RetrofitClient.apiInterface
+        val call =
+            apiServices.memberShipListApi(
+                getString(R.string.api_key)
+            )
+        call.enqueue(object : Callback<MemberShipListModel> {
+            override fun onResponse(
+                call: Call<MemberShipListModel>,
+                response: Response<MemberShipListModel>
+            ) {
+                ViewController.hideLoading()
+                try {
+                    if (response.isSuccessful) {
+
+                        val mainList = response.body()?.response
+                        if (response.body()?.status == true && mainList != null) {
+                            dataSet(mainList)
+                        }else{
+
+                        }
+
+                    }
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(call: Call<MemberShipListModel>, t: Throwable) {
+                Log.e("terror",t.message.toString())
+            }
+        })
+    }
+
+    private fun dataSet(membersList: List<MemberShipListResponse>) {
+        binding.recyclerview.apply {
+            binding.recyclerview.layoutManager = LinearLayoutManager(context)
+            binding.recyclerview.adapter  = HomeMembersAdapter(requireActivity(), membersList) { item ->
+                val intent = Intent(activity, MemberDetailsActivity::class.java).apply {
+                    putExtra("membershipId", item.membershipId)
+                }
+                startActivity(intent)
+                requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
+            }
+        }
+    }
 
 
 }

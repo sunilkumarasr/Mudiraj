@@ -135,6 +135,8 @@ class LoginActivity : AppCompatActivity() {
 
                             if (response.body()?.status == true){
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.userId,response.body()?.response!!.user_id.toString())
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.state,response.body()?.response!!.state.toString())
+                                Preferences.saveStringValue(this@LoginActivity, Preferences.constituencies,response.body()?.response!!.constituencies.toString())
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.name,response.body()?.response!!.full_name.toString())
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.mobileNumber,response.body()?.response!!.phone.toString())
                                 Preferences.saveStringValue(this@LoginActivity, Preferences.email,response.body()?.response!!.email.toString())
