@@ -3,14 +3,19 @@ package com.mudiraj.mudirajfoundation.Models
 import com.google.gson.annotations.SerializedName
 
 data class BannersModel(
-    @SerializedName("Status") val status: Boolean,
-    @SerializedName("Message") val message: String,
-    @SerializedName("Response") val response: ArrayList<BannersResponse>,
-    @SerializedName("code") val code: Int
+    @SerializedName("status") val status: Boolean,
+    @SerializedName("message") val message: String,
+    @SerializedName("data") val response: ArrayList<BannersResponse>,
 )
 
 data class BannersResponse(
     @SerializedName("id") val id : String,
     @SerializedName("image") val image : String,
-    @SerializedName("full_path") val fullPath : String
+    @SerializedName("constituencies") val constituencies : String,
+    @SerializedName("created_at") val created_at : String,
+    @SerializedName("created_by") val created_by : String,
+    @SerializedName("updated_at") val updated_at : String,
+    @SerializedName("updated_by") val updated_by : String,
+    @SerializedName("status") val status : String,
+    @SerializedName("position_order") val position_order : String,
 )

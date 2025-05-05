@@ -149,16 +149,17 @@ class LoginActivity : AppCompatActivity() {
                                 ViewController.customToast(applicationContext, "Login Failed")
                             }
 
-
                         } else {
                             ViewController.customToast(applicationContext, "Invalid Mobile Number")
                         }
                     } catch (e: NullPointerException) {
                         e.printStackTrace()
+                        Log.e("error__",e.message.toString())
                     }
                 }
 
                 override fun onFailure(call: Call<LoginModel>, t: Throwable) {
+                    Log.e("error_",t.message.toString())
                     binding.txtButton.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.GONE
                     ViewController.customToast(applicationContext, "Invalid Credentials")

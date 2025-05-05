@@ -32,6 +32,7 @@ import com.mudiraj.mudirajfoundation.Models.SettingsModel
 import com.mudiraj.mudirajfoundation.Models.ShippingPolicyModel
 import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.Models.TermsAndConditionsModel
+import com.mudiraj.mudirajfoundation.Models.TotalUsersModel
 import com.mudiraj.mudirajfoundation.Models.UpdateCartResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -88,13 +89,24 @@ interface ApiInterface {
         @Field("email_id") username: String
     ): Call<ForgotModel>
 
-
     @FormUrlEncoded
     @POST("membership_list")
     fun memberShipListApi(
         @Field("api_key") apiKey: String
     ): Call<MemberShipListModel>
 
+    @FormUrlEncoded
+    @POST("banner_list")
+    fun bannerListApi(
+        @Field("api_key") apiKey: String,
+        @Field("constituencies_id") constituencies_id: String,
+    ): Call<BannersModel>
+
+    @FormUrlEncoded
+    @POST("total_users")
+    fun totalUsersApi(
+        @Field("api_key") apiKey: String
+    ): Call<TotalUsersModel>
 
     @FormUrlEncoded
     @POST("settings")
@@ -102,11 +114,6 @@ interface ApiInterface {
         @Field("api_key") apiKey: String,
     ): Call<SettingsModel>
 
-    @FormUrlEncoded
-    @POST("sliders")
-    fun getBannersApi(
-        @Field("api_key") apiKey: String
-    ): Call<BannersModel>
 
     @FormUrlEncoded
     @POST("categories_list")

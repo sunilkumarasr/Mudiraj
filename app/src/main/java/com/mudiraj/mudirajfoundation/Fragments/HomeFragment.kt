@@ -1,6 +1,7 @@
 package com.mudiraj.mudirajfoundation.Fragments
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -30,11 +31,14 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.mudiraj.mudirajfoundation.Activitys.MemberDetailsActivity
+import com.mudiraj.mudirajfoundation.Adapters.HomeBannersAdapter
 import com.mudiraj.mudirajfoundation.Adapters.HomeMembersAdapter
 import com.mudiraj.mudirajfoundation.Models.MemberShipListModel
 import com.mudiraj.mudirajfoundation.Models.MemberShipListResponse
 import com.mudiraj.mudirajfoundation.Models.StateModel
+import com.mudiraj.mudirajfoundation.Models.TotalUsersModel
 
 
 class HomeFragment : Fragment() {
@@ -42,6 +46,11 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
 
+
+    //banners
+    private lateinit var handler : Handler
+    private lateinit var imageList:ArrayList<BannersResponse>
+    private lateinit var adapter: HomeBannersAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,8 +75,21 @@ class HomeFragment : Fragment() {
             ViewController.showToast(requireActivity(), "Please check your connection ")
             return
         } else {
+            totalUsersApi()
+            bannerListApi()
             memberShipListApi()
         }
+
+        //banners
+        handler = Handler(Looper.myLooper()!!)
+        setUpTransformer()
+        binding.viewPagerBanners.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                handler.removeCallbacks(runnable)
+                handler.postDelayed(runnable , 4000)
+            }
+        })
 
         binding.linearWhatsApp.setOnClickListener {
             val phoneNumber = "9493409050"
@@ -182,8 +204,137 @@ class HomeFragment : Fragment() {
             }
         }
 
+
+        binding.imgQR.setOnClickListener {
+            val upiUri = "upi://pay?pa=43909649794@sbi&pn=MUDIRAJ%20FOUNDATION%20TELANGANA&mc=7407&tr=TXN123456&tn=Donation&am=1.00&cu=INR"
+            openUpiIntent(upiUri, requireActivity())
+        }
+
+
     }
 
+    fun openUpiIntent(upiUri: String, context: Context) {
+        val uri = Uri.parse(upiUri)
+
+        // Try Google Pay
+        val gpayIntent = Intent(Intent.ACTION_VIEW).apply {
+            data = uri
+            setPackage("com.google.android.apps.nbu.paisa.user")
+        }
+
+        // Try PhonePe
+        val phonePeIntent = Intent(Intent.ACTION_VIEW).apply {
+            data = uri
+            setPackage("com.phonepe.app")
+        }
+
+        try {
+            context.startActivity(gpayIntent)
+        } catch (e: Exception) {
+            try {
+                context.startActivity(phonePeIntent)
+            } catch (e: Exception) {
+                Toast.makeText(context, "No supported UPI app found", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+    private fun totalUsersApi() {
+        val apiServices = RetrofitClient.apiInterface
+        val call =
+            apiServices.totalUsersApi(
+                getString(R.string.api_key)
+            )
+        call.enqueue(object : Callback<TotalUsersModel> {
+            override fun onResponse(
+                call: Call<TotalUsersModel>,
+                response: Response<TotalUsersModel>
+            ) {
+                ViewController.hideLoading()
+                try {
+                    if (response.isSuccessful) {
+
+                        val TotalUsers = response.body()?.response
+                        if (response.body()?.status == true) {
+                            if (TotalUsers != null) {
+                                binding.txtTotalUsers.text = "Total Users:"+TotalUsers.count.toString()
+                            }
+                        }
+
+                    }
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(call: Call<TotalUsersModel>, t: Throwable) {
+                Log.e("terror",t.message.toString())
+            }
+        })
+    }
+    //banners
+    private fun bannerListApi() {
+        val constituencies = Preferences.loadStringValue(requireActivity(), Preferences.constituencies, "")
+
+        val apiServices = RetrofitClient.apiInterface
+        val call =
+            apiServices.bannerListApi(
+                getString(R.string.api_key),
+                "66"
+            )
+        call.enqueue(object : Callback<BannersModel> {
+            override fun onResponse(
+                call: Call<BannersModel>,
+                response: Response<BannersModel>
+            ) {
+                ViewController.hideLoading()
+                try {
+                    if (response.isSuccessful) {
+
+                        val bannersServicesList = response.body()?.response
+                        //empty
+                        if (bannersServicesList.isNullOrEmpty()) {
+                            binding.viewPagerBanners.visibility = View.GONE
+                            return
+                        }
+                        dataSetBanners(bannersServicesList)
+
+                    }
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(call: Call<BannersModel>, t: Throwable) {
+                Log.e("terror",t.message.toString())
+            }
+        })
+    }
+    private fun dataSetBanners(bannersselectedServicesList: ArrayList<BannersResponse>) {
+        adapter = HomeBannersAdapter(bannersselectedServicesList, binding.viewPagerBanners)
+        binding.viewPagerBanners.adapter = adapter
+        binding.viewPagerBanners.offscreenPageLimit = 3
+        binding.viewPagerBanners.clipToPadding = false
+        binding.viewPagerBanners.clipChildren = false
+        binding.viewPagerBanners.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+    }
+    private val runnable = Runnable {
+        binding.viewPagerBanners.currentItem = binding.viewPagerBanners.currentItem + 1
+    }
+    private fun setUpTransformer() {
+        val transformer = CompositePageTransformer()
+        transformer.addTransformer(MarginPageTransformer(20))
+        transformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = 0.85f + r * 0.14f
+//            page.alpha = 0.50f + (1 - abs(position)) * 0.50f
+        }
+        binding.viewPagerBanners.setPageTransformer(transformer)
+    }
+
+    //members list
     private fun memberShipListApi() {
         val apiServices = RetrofitClient.apiInterface
         val call =

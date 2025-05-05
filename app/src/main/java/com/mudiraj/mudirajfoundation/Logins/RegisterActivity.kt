@@ -17,6 +17,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -167,6 +168,8 @@ class RegisterActivity : AppCompatActivity() {
         binding.StateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedState = parent.getItemAtPosition(position).toString()
+                Toast.makeText(this@RegisterActivity,selectedState,Toast.LENGTH_SHORT).show()
+
                 ConstituencyListApi(selectedState)
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -174,6 +177,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.ConstituenciesSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 selectedConstituency = parent.getItemAtPosition(position).toString()
+                Toast.makeText(this@RegisterActivity,selectedConstituency,Toast.LENGTH_LONG).show()
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
