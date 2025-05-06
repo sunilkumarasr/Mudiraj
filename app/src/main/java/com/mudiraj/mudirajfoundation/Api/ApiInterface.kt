@@ -19,8 +19,10 @@ import com.mudiraj.mudirajfoundation.Models.DeleteCartResponse
 import com.mudiraj.mudirajfoundation.Models.DeleteModel
 import com.mudiraj.mudirajfoundation.Models.FavouriteModel
 import com.mudiraj.mudirajfoundation.Models.ForgotModel
+import com.mudiraj.mudirajfoundation.Models.GalleryListModel
 import com.mudiraj.mudirajfoundation.Models.LoginModel
 import com.mudiraj.mudirajfoundation.Models.MemberShipListModel
+import com.mudiraj.mudirajfoundation.Models.NewsModel
 import com.mudiraj.mudirajfoundation.Models.OrderHistoryModel
 import com.mudiraj.mudirajfoundation.Models.PlaceorderModel
 import com.mudiraj.mudirajfoundation.Models.PrivacyPolicyModel
@@ -103,10 +105,24 @@ interface ApiInterface {
     ): Call<BannersModel>
 
     @FormUrlEncoded
+    @POST("news_list")
+    fun newsListApi(
+        @Field("api_key") apiKey: String,
+        @Field("constituencies_id") constituencies_id: String,
+    ): Call<NewsModel>
+
+    @FormUrlEncoded
     @POST("total_users")
     fun totalUsersApi(
         @Field("api_key") apiKey: String
     ): Call<TotalUsersModel>
+
+    @FormUrlEncoded
+    @POST("gallery_list")
+    fun galleryListApi(
+        @Field("api_key") apiKey: String,
+        @Field("constituencies") constituencies: String
+    ): Call<GalleryListModel>
 
     @FormUrlEncoded
     @POST("settings")

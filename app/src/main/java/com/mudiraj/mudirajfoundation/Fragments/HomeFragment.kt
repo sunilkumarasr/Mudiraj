@@ -32,11 +32,16 @@ import kotlin.math.abs
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.mudiraj.mudirajfoundation.Activitys.GalleryActivity
 import com.mudiraj.mudirajfoundation.Activitys.MemberDetailsActivity
 import com.mudiraj.mudirajfoundation.Adapters.HomeBannersAdapter
 import com.mudiraj.mudirajfoundation.Adapters.HomeMembersAdapter
+import com.mudiraj.mudirajfoundation.Adapters.NewsAdapter
+import com.mudiraj.mudirajfoundation.Logins.LoginActivity
 import com.mudiraj.mudirajfoundation.Models.MemberShipListModel
 import com.mudiraj.mudirajfoundation.Models.MemberShipListResponse
+import com.mudiraj.mudirajfoundation.Models.NewsModel
+import com.mudiraj.mudirajfoundation.Models.NewsResponse
 import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.Models.TotalUsersModel
 
@@ -49,8 +54,11 @@ class HomeFragment : Fragment() {
 
     //banners
     private lateinit var handler : Handler
-    private lateinit var imageList:ArrayList<BannersResponse>
     private lateinit var adapter: HomeBannersAdapter
+
+    //banners
+    private lateinit var handlerNews : Handler
+    private lateinit var adapterNews: NewsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,6 +86,7 @@ class HomeFragment : Fragment() {
             totalUsersApi()
             bannerListApi()
             memberShipListApi()
+            newsListApi()
         }
 
         //banners
@@ -90,6 +99,19 @@ class HomeFragment : Fragment() {
                 handler.postDelayed(runnable , 4000)
             }
         })
+
+
+        //news
+        handlerNews = Handler(Looper.myLooper()!!)
+        setUpTransformerNews()
+        binding.viewPagerNews.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                handlerNews.removeCallbacks(runnableNews)
+                handlerNews.postDelayed(runnableNews , 4000)
+            }
+        })
+
 
         binding.linearWhatsApp.setOnClickListener {
             val phoneNumber = "9493409050"
@@ -204,10 +226,15 @@ class HomeFragment : Fragment() {
             }
         }
 
-
         binding.imgQR.setOnClickListener {
             val upiUri = "upi://pay?pa=43909649794@sbi&pn=MUDIRAJ%20FOUNDATION%20TELANGANA&mc=7407&tr=TXN123456&tn=Donation&am=1.00&cu=INR"
             openUpiIntent(upiUri, requireActivity())
+        }
+
+        binding.cardViewGallery.setOnClickListener {
+            val intent = Intent(requireActivity(), GalleryActivity::class.java)
+            startActivity(intent)
+            requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
         }
 
 
@@ -368,7 +395,6 @@ class HomeFragment : Fragment() {
             }
         })
     }
-
     private fun dataSet(membersList: List<MemberShipListResponse>) {
         binding.recyclerview.apply {
             binding.recyclerview.layoutManager = LinearLayoutManager(context)
@@ -381,6 +407,69 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
+
+    //News banners
+    private fun newsListApi() {
+        val constituencies = Preferences.loadStringValue(requireActivity(), Preferences.constituencies, "")
+
+        val apiServices = RetrofitClient.apiInterface
+        val call =
+            apiServices.newsListApi(
+                getString(R.string.api_key),
+                "66"
+            )
+        call.enqueue(object : Callback<NewsModel> {
+            override fun onResponse(
+                call: Call<NewsModel>,
+                response: Response<NewsModel>
+            ) {
+                ViewController.hideLoading()
+                try {
+                    if (response.isSuccessful) {
+
+                        val newsServicesList = response.body()?.response
+                        //empty
+                        if (newsServicesList.isNullOrEmpty()) {
+                            binding.viewPagerNews.visibility = View.GONE
+                            return
+                        }
+                        dataSetNews(newsServicesList)
+
+                    }
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(call: Call<NewsModel>, t: Throwable) {
+                Log.e("terror",t.message.toString())
+            }
+        })
+    }
+    private fun dataSetNews(newsSelectedServicesList: ArrayList<NewsResponse>) {
+        adapterNews = NewsAdapter(newsSelectedServicesList, binding.viewPagerNews)
+        binding.viewPagerNews.adapter = adapterNews
+        binding.viewPagerNews.offscreenPageLimit = 3
+        binding.viewPagerNews.clipToPadding = false
+        binding.viewPagerNews.clipChildren = false
+        binding.viewPagerNews.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+    }
+    private val runnableNews = Runnable {
+        binding.viewPagerNews.currentItem = binding.viewPagerNews.currentItem + 1
+    }
+    private fun setUpTransformerNews() {
+        val transformer = CompositePageTransformer()
+        transformer.addTransformer(MarginPageTransformer(20))
+        transformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = 0.85f + r * 0.14f
+        }
+        binding.viewPagerNews.setPageTransformer(transformer)
+    }
+
+
 
 
 }

@@ -378,22 +378,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <androidx.cardview.widget.CardView
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerNews"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
-                    app:cardCornerRadius="10dp">
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:src="@drawable/bannernews"
-                        android:scaleType="fitXY"/>
-                </androidx.cardview.widget.CardView>
+                    android:layout_height="170dp"
+                    android:paddingTop="5dp"
+                    android:paddingStart="40dp"
+                    android:paddingEnd="40dp"/>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewGallery"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

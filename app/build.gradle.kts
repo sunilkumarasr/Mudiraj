@@ -87,5 +87,8 @@ dependencies {
 
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
 
+    //zoom image
+    implementation ("com.github.chrisbanes:PhotoView:2.3.0")
+
 
 }
