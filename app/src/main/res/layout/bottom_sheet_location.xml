@@ -48,7 +48,20 @@
                 android:layout_marginTop="15dp"
                 android:background="@drawable/editbox_round">
                 <Spinner
-                    android:id="@+id/spinnerCity"
+                    android:id="@+id/StateSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/editbox_round">
+                <Spinner
+                    android:id="@+id/ConstituenciesSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
             </LinearLayout>

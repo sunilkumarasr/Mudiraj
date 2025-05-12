@@ -308,7 +308,7 @@ class HomeFragment : Fragment() {
         val call =
             apiServices.bannerListApi(
                 getString(R.string.api_key),
-                "66"
+                constituencies.toString()
             )
         call.enqueue(object : Callback<BannersModel> {
             override fun onResponse(
@@ -408,7 +408,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     //News banners
     private fun newsListApi() {
         val constituencies = Preferences.loadStringValue(requireActivity(), Preferences.constituencies, "")
@@ -417,7 +416,7 @@ class HomeFragment : Fragment() {
         val call =
             apiServices.newsListApi(
                 getString(R.string.api_key),
-                "66"
+                constituencies.toString()
             )
         call.enqueue(object : Callback<NewsModel> {
             override fun onResponse(

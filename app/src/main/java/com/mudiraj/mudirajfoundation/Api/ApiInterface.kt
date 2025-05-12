@@ -73,7 +73,8 @@ interface ApiInterface {
     @FormUrlEncoded
     @POST("constituencies_list")
     fun ConstituencyListApi(
-        @Field("api_key") apiKey: String
+        @Field("api_key") apiKey: String,
+        @Field("state_id") state_id: String
     ): Call<StateModel>
 
     @FormUrlEncoded
@@ -256,10 +257,10 @@ interface ApiInterface {
     ): Call<CityModel>
 
     @FormUrlEncoded
-    @POST("city")
+    @POST("constituencies_list")
     fun getAreaListApi(
         @Field("api_key") apiKey: String,
-        @Field("state_id") stateId: String,
+//        @Field("state_id") stateId: String,
     ): Call<AreaModel>
 
     @FormUrlEncoded

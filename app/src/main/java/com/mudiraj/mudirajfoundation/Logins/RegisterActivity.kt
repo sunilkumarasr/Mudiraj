@@ -14,9 +14,11 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +26,7 @@ import androidx.core.content.ContextCompat
 import com.mudiraj.mudirajfoundation.Api.RetrofitClient
 import com.mudiraj.mudirajfoundation.Config.ViewController
 import com.mudiraj.mudirajfoundation.Models.RegisterModel
+import com.mudiraj.mudirajfoundation.Models.StateListResponse
 import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.R
 import com.mudiraj.mudirajfoundation.databinding.ActivityRegisterBinding
@@ -166,23 +169,22 @@ class RegisterActivity : AppCompatActivity() {
 
 
         binding.StateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                selectedState = parent.getItemAtPosition(position).toString()
-                Toast.makeText(this@RegisterActivity,selectedState,Toast.LENGTH_SHORT).show()
-
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val state = parent.getItemAtPosition(position) as StateListResponse
+                selectedState = state.id
+                val selectedStateName = state.name
                 ConstituencyListApi(selectedState)
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
         binding.ConstituenciesSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                selectedConstituency = parent.getItemAtPosition(position).toString()
-                Toast.makeText(this@RegisterActivity,selectedConstituency,Toast.LENGTH_LONG).show()
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val state = parent.getItemAtPosition(position) as StateListResponse
+                selectedConstituency = state.id
+                val selectedStateName = state.name
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
-
-
 
     }
 
@@ -220,6 +222,14 @@ class RegisterActivity : AppCompatActivity() {
         }
         if (password.isEmpty()) {
             ViewController.customToast(applicationContext, "Enter password")
+            return
+        }
+        if (selectedState.isEmpty()) {
+            ViewController.customToast(applicationContext, "Select State")
+            return
+        }
+        if (selectedConstituency.isEmpty()) {
+            ViewController.customToast(applicationContext, "Select Constituency")
             return
         }
 
@@ -298,11 +308,24 @@ class RegisterActivity : AppCompatActivity() {
                             if (response.body()?.status == true && stateList != null) {
                                 val stateNames = stateList.map { it.name }
 
-                                val adapter = ArrayAdapter(
+                                val adapter = object : ArrayAdapter<StateListResponse>(
                                     this@RegisterActivity,
                                     android.R.layout.simple_spinner_item,
-                                    stateNames
-                                )
+                                    stateList
+                                ) {
+                                    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                        val view = super.getView(position, convertView, parent)
+                                        (view as TextView).text = stateList[position].name
+                                        return view
+                                    }
+
+                                    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                        val view = super.getDropDownView(position, convertView, parent)
+                                        (view as TextView).text = stateList[position].name
+                                        return view
+                                    }
+                                }
+
                                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                                 findViewById<Spinner>(R.id.StateSpinner).adapter = adapter
                             }
@@ -324,7 +347,8 @@ class RegisterActivity : AppCompatActivity() {
         val apiServices = RetrofitClient.apiInterface
         val call =
             apiServices.ConstituencyListApi(
-                getString(R.string.api_key)
+                getString(R.string.api_key),
+                selectedState
             )
         call.enqueue(object : Callback<StateModel> {
             override fun onResponse(
@@ -339,11 +363,24 @@ class RegisterActivity : AppCompatActivity() {
                         if (response.body()?.status == true && stateList != null) {
                             val constituenciesNames = stateList.map { it.name }
 
-                            val adapter = ArrayAdapter(
+                            val adapter = object : ArrayAdapter<StateListResponse>(
                                 this@RegisterActivity,
                                 android.R.layout.simple_spinner_item,
-                                constituenciesNames
-                            )
+                                stateList
+                            ) {
+                                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                    val view = super.getView(position, convertView, parent)
+                                    (view as TextView).text = stateList[position].name
+                                    return view
+                                }
+
+                                override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                    val view = super.getDropDownView(position, convertView, parent)
+                                    (view as TextView).text = stateList[position].name
+                                    return view
+                                }
+                            }
+
                             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                             findViewById<Spinner>(R.id.ConstituenciesSpinner).adapter = adapter
                         }

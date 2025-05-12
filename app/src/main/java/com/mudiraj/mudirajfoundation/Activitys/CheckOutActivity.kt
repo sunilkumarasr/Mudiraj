@@ -539,7 +539,7 @@ class CheckOutActivity : AppCompatActivity() {
 
     private fun getAreaListApi(stateId: String, spinnerArea: Spinner) {
         val apiServices = RetrofitClient.apiInterface
-        val call = apiServices.getAreaListApi(getString(R.string.api_key), stateId)
+        val call = apiServices.getAreaListApi(getString(R.string.api_key))
         call.enqueue(object : Callback<AreaModel> {
             override fun onResponse(call: Call<AreaModel>, response: Response<AreaModel>) {
                 try {
