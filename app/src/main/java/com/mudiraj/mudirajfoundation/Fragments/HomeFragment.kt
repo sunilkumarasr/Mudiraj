@@ -50,8 +50,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-
-
     //banners
     private lateinit var handler : Handler
     private lateinit var adapter: HomeBannersAdapter

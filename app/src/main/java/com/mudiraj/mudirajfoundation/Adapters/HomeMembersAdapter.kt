@@ -48,7 +48,6 @@ class HomeMembersAdapter(
         holder.recyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         holder.recyclerview.adapter = MemberSubListAdapter(item.membershipList)
 
-
     }
 
     override fun getItemCount(): Int {

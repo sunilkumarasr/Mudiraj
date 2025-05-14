@@ -11,7 +11,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
-            android:layout_above="@+id/bottomBanner"
             android:background="@color/whitebg">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -98,13 +97,11 @@
                     </LinearLayout>
                 </LinearLayout>
 
-
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:src="@drawable/top_banner"
                     android:scaleType="fitXY"/>
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -175,7 +172,7 @@
                                 android:layout_weight="1"
                                 android:textSize="12sp"
                                 android:background="@android:color/transparent" />
-                            <ImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:layout_gravity="center_vertical"
@@ -219,7 +216,7 @@
                                 android:textColor="@color/orange"
                                 android:textSize="17sp"
                                 android:textStyle="bold"/>
-                            <ImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/img_paypol"
                                 android:layout_width="match_parent"
                                 android:layout_height="30dp"
@@ -253,7 +250,7 @@
                         android:layout_weight="1"
                         android:layout_gravity="end"
                         android:gravity="end">
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginEnd="5dp"
@@ -384,7 +381,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPagerNews"
                     android:layout_width="match_parent"
@@ -415,7 +411,7 @@
                     android:src="@drawable/banner_durga"
                     android:scaleType="fitXY"/>
 
-               <LinearLayout
+                <LinearLayout
                    android:visibility="gone"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
@@ -458,7 +454,7 @@
                            android:textSize="12sp"
                            android:textStyle="bold" />
                    </LinearLayout>
-                   <ImageView
+                   <androidx.appcompat.widget.AppCompatImageView
                        android:id="@+id/img_durgamma"
                        android:layout_width="70dp"
                        android:layout_height="70dp"
@@ -488,7 +484,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:orientation="vertical">
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/imgQR"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
@@ -527,7 +523,7 @@
                             android:textColor="@color/lightRed"
                             android:textSize="15sp"
                             android:textStyle="bold" />
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/img_bhim"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
@@ -539,13 +535,13 @@
                             android:layout_height="25dp"
                             android:layout_marginTop="10dp"
                             android:orientation="horizontal">
-                            <ImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="end"
                                 android:layout_weight="1"
                                 android:src="@drawable/phonepay" />
-                            <ImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="35dp"
                                 android:layout_gravity="start"
@@ -558,13 +554,13 @@
                             android:layout_height="25dp"
                             android:layout_marginTop="10dp"
                             android:orientation="horizontal">
-                            <ImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="end"
                                 android:layout_weight="1"
                                 android:src="@drawable/googlepay" />
-                            <ImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
@@ -586,8 +582,7 @@
 
                 </LinearLayout>
 
-
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:scaleType="fitXY"
@@ -609,7 +604,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/youtube_ic"
@@ -618,7 +613,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="http://youtube.com/mudirajfoundation"
+                        android:text="Youtube"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
@@ -629,7 +624,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/instagram"
@@ -638,7 +633,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="http://instagram.com/mudirajfoundation"
+                        android:text="Instagram"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
@@ -649,7 +644,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/facebook"
@@ -658,7 +653,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="http://facebook.com/mudiraj foundation"
+                        android:text="Facebook"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
@@ -669,7 +664,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/whatsapp_ic"
@@ -678,7 +673,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="https://whatsapp.com/channel/0029Vb5qYzI9sBI8FqGycJ1f"
+                        android:text="Whatsapp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
@@ -689,18 +684,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/website_ic"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
                         android:layout_marginTop="5dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="www.mudirajfoundation.com"
+                        android:text="Web"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
                         android:textColor="@color/black"
                         android:textSize="14sp"/>
                 </LinearLayout>
@@ -709,7 +704,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:src="@drawable/email_ic"
@@ -718,24 +713,24 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="mudirajfoundation1@gmail.com"
+                        android:text="Gmail"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
                         android:textColor="@color/black"
                         android:textSize="14sp"/>
                 </LinearLayout>
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/bottomBanner"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:scaleType="fitXY"
                     android:layout_marginTop="15dp"
+                    android:layout_marginBottom="60dp"
                     android:src="@drawable/bb2"/>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
     </RelativeLayout>
 
 </layout>
