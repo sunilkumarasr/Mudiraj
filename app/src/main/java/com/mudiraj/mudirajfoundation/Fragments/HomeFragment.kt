@@ -215,9 +215,9 @@ class HomeFragment : Fragment() {
 
         binding.linearEmail.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO).apply {
-                data = Uri.parse("mailto:hmudhirajfoundation1@gmail.com")
+                data = Uri.parse("mailto:mudirajfoundation1@gmail.com")
                 putExtra(Intent.EXTRA_SUBJECT, "Inquiry from App")
-                putExtra(Intent.EXTRA_TEXT, "Hello Mudhiraj Foundation,\n\n")
+                putExtra(Intent.EXTRA_TEXT, "Hello Mudiraj Foundation,\n\n")
             }
             try {
                 startActivity(intent)

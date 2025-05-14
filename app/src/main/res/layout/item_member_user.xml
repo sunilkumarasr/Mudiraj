@@ -5,16 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:orientation="vertical"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="5dp"
-        app:cardCornerRadius="25dp"
-        android:backgroundTint="@color/blue"
-        android:padding="8dp">
+        app:cardCornerRadius="10dp">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgUser"
             android:layout_width="match_parent"

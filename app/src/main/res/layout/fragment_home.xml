@@ -167,17 +167,23 @@
                             android:orientation="horizontal"
                             android:background="@drawable/roundedge_red"
                             android:gravity="center_vertical">
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/search_ic"
-                                app:tint="@color/black"
-                                android:layout_marginStart="10dp"/>
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:textSize="12sp"
                                 android:background="@android:color/transparent" />
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:src="@drawable/search_ic"
+                                app:tint="@color/black"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginStart="10dp"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -461,14 +467,6 @@
 
                </LinearLayout>
 
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:scaleType="fitXY"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/bb"/>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -589,6 +587,13 @@
                 </LinearLayout>
 
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/bb"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -613,7 +618,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="http://youtube.com/mudhirajfoundation"
+                        android:text="http://youtube.com/mudirajfoundation"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
@@ -633,7 +638,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="http://instagram.com/mudhirajfoundation"
+                        android:text="http://instagram.com/mudirajfoundation"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
@@ -653,7 +658,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="http://facebook.com/mudhiraj foundation"
+                        android:text="http://facebook.com/mudiraj foundation"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
@@ -693,7 +698,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="www.mudhirajfoundation.com"
+                        android:text="www.mudirajfoundation.com"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
@@ -713,23 +718,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="mudhirajfoundation1@gmail.com"
+                        android:text="mudirajfoundation1@gmail.com"
                         android:layout_gravity="center"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/black"
                         android:textSize="14sp"/>
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/bottomBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/bb2"/>
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
-        <ImageView
-            android:id="@+id/bottomBanner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:scaleType="fitXY"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/bb2"/>
 
     </RelativeLayout>
 
