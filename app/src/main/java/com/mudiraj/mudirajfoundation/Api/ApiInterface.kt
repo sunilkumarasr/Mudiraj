@@ -54,14 +54,43 @@ interface ApiInterface {
     @POST("registration")
     fun registerApi(
         @Field("api_key") apiKey: String,
-        @Field("full_name") fullName: String,
-        @Field("phone") mobileNumber: String,
         @Field("email") emailId: String,
-        @Field("business_name") business_name: String,
-        @Field("full_address") address: String,
         @Field("password") password: String,
-        @Field("state") state: String,
+        @Field("phone") mobileNumber: String,
+        @Field("full_name") fullName: String,
+        @Field("date_of_birth") date_of_birth: String,
+        @Field("care_of") care_of: String,
+        @Field("gender") gender: String,
+        @Field("full_address") address: String,
+        @Field("business_name") business_name: String,
         @Field("constituencies") constituencies: String,
+        @Field("state") state: String,
+        @Field("mandal") mandal: String,
+        @Field("ward") ward: String,
+        @Field("pin_code") pin_code: String,
+        @Field("current_occupation") current_occupation: String,
+        @Field("organization_company") organization_company: String,
+        @Field("designation") designation: String,
+        @Field("work_location") work_location: String,
+        @Field("permanent_address") permanent_address: String,
+        @Field("facebook_profile") facebook_profile: String,
+        @Field("facebook_followers") facebook_followers: String,
+        @Field("instagram_profile") instagram_profile: String,
+        @Field("instagram_followes") instagram_followes: String,
+        @Field("twitter_x_profile") twitter_x_profile: String,
+        @Field("twitter_x_follwers") twitter_x_follwers: String,
+        @Field("linkedin_profile") linkedin_profile: String,
+        @Field("youtube_channel") youtube_channel: String,
+        @Field("youtube_followers") youtube_followers: String,
+        @Field("whatsapp_number") whatsapp_number: String,
+        @Field("telegram_username_channel") telegram_username_channel: String,
+        @Field("skills_interests") skills_interests: String,
+        @Field("volunteer_experience") volunteer_experience: String,
+        @Field("affiliated_organizations") affiliated_organizations: String,
+        @Field("marital_status") marital_status: String,
+        @Field("blood_group") blood_group: String,
+        @Field("two_wheeler") two_wheeler: String,
+        @Field("four_wheeler") four_wheeler: String,
     ): Call<RegisterModel>
 
     @FormUrlEncoded
@@ -93,9 +122,54 @@ interface ApiInterface {
     ): Call<ForgotModel>
 
     @FormUrlEncoded
+    @POST("registration")
+    fun addMemberApi(
+        @Field("api_key") apiKey: String,
+        @Field("email") emailId: String,
+        @Field("password") password: String,
+        @Field("phone") mobileNumber: String,
+        @Field("full_name") fullName: String,
+        @Field("date_of_birth") date_of_birth: String,
+        @Field("care_of") care_of: String,
+        @Field("gender") gender: String,
+        @Field("full_address") address: String,
+        @Field("business_name") business_name: String,
+        @Field("constituencies") constituencies: String,
+        @Field("state") state: String,
+        @Field("mandal") mandal: String,
+        @Field("ward") ward: String,
+        @Field("pin_code") pin_code: String,
+        @Field("current_occupation") current_occupation: String,
+        @Field("organization_company") organization_company: String,
+        @Field("designation") designation: String,
+        @Field("work_location") work_location: String,
+        @Field("permanent_address") permanent_address: String,
+        @Field("facebook_profile") facebook_profile: String,
+        @Field("facebook_followers") facebook_followers: String,
+        @Field("instagram_profile") instagram_profile: String,
+        @Field("instagram_followes") instagram_followes: String,
+        @Field("twitter_x_profile") twitter_x_profile: String,
+        @Field("twitter_x_follwers") twitter_x_follwers: String,
+        @Field("linkedin_profile") linkedin_profile: String,
+        @Field("youtube_channel") youtube_channel: String,
+        @Field("youtube_followers") youtube_followers: String,
+        @Field("whatsapp_number") whatsapp_number: String,
+        @Field("telegram_username_channel") telegram_username_channel: String,
+        @Field("skills_interests") skills_interests: String,
+        @Field("volunteer_experience") volunteer_experience: String,
+        @Field("affiliated_organizations") affiliated_organizations: String,
+        @Field("marital_status") marital_status: String,
+        @Field("blood_group") blood_group: String,
+        @Field("two_wheeler") two_wheeler: String,
+        @Field("four_wheeler") four_wheeler: String,
+    ): Call<RegisterModel>
+
+    @FormUrlEncoded
     @POST("membership_list")
     fun memberShipListApi(
-        @Field("api_key") apiKey: String
+        @Field("api_key") apiKey: String,
+        @Field("constituencies_id") constituencies_id: String,
+        @Field("state_id") state_id: String,
     ): Call<MemberShipListModel>
 
     @FormUrlEncoded
@@ -103,6 +177,7 @@ interface ApiInterface {
     fun bannerListApi(
         @Field("api_key") apiKey: String,
         @Field("constituencies_id") constituencies_id: String,
+        @Field("state_id") state_id: String,
     ): Call<BannersModel>
 
     @FormUrlEncoded
@@ -110,6 +185,7 @@ interface ApiInterface {
     fun newsListApi(
         @Field("api_key") apiKey: String,
         @Field("constituencies_id") constituencies_id: String,
+        @Field("state_id") state_id: String,
     ): Call<NewsModel>
 
     @FormUrlEncoded
@@ -122,7 +198,8 @@ interface ApiInterface {
     @POST("gallery_list")
     fun galleryListApi(
         @Field("api_key") apiKey: String,
-        @Field("constituencies") constituencies: String
+        @Field("constituencies") constituencies: String,
+        @Field("state_id") state_id: String
     ): Call<GalleryListModel>
 
     @FormUrlEncoded
@@ -236,11 +313,43 @@ interface ApiInterface {
     @POST("update_profile")
     fun updateProfileApi(
         @Field("api_key") apiKey: String,
-        @Field("user_id") customerId: String,
-        @Field("full_name") fullName: String,
-        @Field("phone") mobileNumber: String,
+        @Field("user_id") user_id: String,
         @Field("email") emailId: String,
-        @Field("full_address") full_address: String,
+        @Field("phone") mobileNumber: String,
+        @Field("full_name") fullName: String,
+        @Field("date_of_birth") date_of_birth: String,
+        @Field("care_of") care_of: String,
+        @Field("gender") gender: String,
+        @Field("full_address") address: String,
+        @Field("business_name") business_name: String,
+        @Field("constituencies") constituencies: String,
+        @Field("state") state: String,
+        @Field("mandal") mandal: String,
+        @Field("ward") ward: String,
+        @Field("pin_code") pin_code: String,
+        @Field("current_occupation") current_occupation: String,
+        @Field("organization_company") organization_company: String,
+        @Field("designation") designation: String,
+        @Field("work_location") work_location: String,
+        @Field("permanent_address") permanent_address: String,
+        @Field("facebook_profile") facebook_profile: String,
+        @Field("facebook_followers") facebook_followers: String,
+        @Field("instagram_profile") instagram_profile: String,
+        @Field("instagram_followes") instagram_followes: String,
+        @Field("twitter_x_profile") twitter_x_profile: String,
+        @Field("twitter_x_follwers") twitter_x_follwers: String,
+        @Field("linkedin_profile") linkedin_profile: String,
+        @Field("youtube_channel") youtube_channel: String,
+        @Field("youtube_followers") youtube_followers: String,
+        @Field("whatsapp_number") whatsapp_number: String,
+        @Field("telegram_username_channel") telegram_username_channel: String,
+        @Field("skills_interests") skills_interests: String,
+        @Field("volunteer_experience") volunteer_experience: String,
+        @Field("affiliated_organizations") affiliated_organizations: String,
+        @Field("marital_status") marital_status: String,
+        @Field("blood_group") blood_group: String,
+        @Field("two_wheeler") two_wheeler: String,
+        @Field("four_wheeler") four_wheeler: String,
     ): Call<ProfileModel>
 
     @FormUrlEncoded

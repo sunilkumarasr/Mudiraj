@@ -46,7 +46,7 @@ class HomeMembersAdapter(
 
         // Setup nested RecyclerView
         holder.recyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        holder.recyclerview.adapter = MemberSubListAdapter(item.membershipList)
+        holder.recyclerview.adapter = MemberSubListAdapter(context,item.membershipList,item.name)
 
     }
 

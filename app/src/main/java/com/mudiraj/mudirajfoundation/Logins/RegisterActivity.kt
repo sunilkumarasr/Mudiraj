@@ -23,6 +23,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.mudiraj.mudirajfoundation.Activitys.DashBoardActivity
 import com.mudiraj.mudirajfoundation.Api.RetrofitClient
 import com.mudiraj.mudirajfoundation.Config.ViewController
 import com.mudiraj.mudirajfoundation.Models.RegisterModel
@@ -48,7 +49,6 @@ class RegisterActivity : AppCompatActivity() {
 
 
     //image selection
-
     val requestPermissions = registerForActivityResult(RequestMultiplePermissions()) { results ->
         var permission = false;
         if (
@@ -96,6 +96,11 @@ class RegisterActivity : AppCompatActivity() {
     private var selectedImageUri: Uri? = null
 
 
+    //gender
+    val genderList = listOf("Male", "Female", "Other")
+    var genderName: String = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -105,6 +110,17 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun inIts() {
 
+        //gender
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            genderList
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.GenderSpinner.adapter = adapter
+        genderName = binding.GenderSpinner.selectedItem.toString()
+
+
         if (!ViewController.noInterNetConnectivity(applicationContext)) {
             ViewController.customToast(applicationContext, "Please check your connection ")
         } else {
@@ -112,7 +128,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 
-        binding.relativeProfile.setOnClickListener {
+        binding.txtImage.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
                 requestPermissions.launch(arrayOf(READ_MEDIA_IMAGES))
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -188,15 +204,43 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-
     private fun registerApi() {
-
-        val name = binding.nameEdit.text?.trim().toString()
-        val email = binding.emailEdit.text?.trim().toString()
-        val mobile = binding.mobileEdit.text?.trim().toString()
-        val businessName = binding.BusinessNameEdit.text?.trim().toString()
-        val address = binding.addressEdit.text?.trim().toString()
+        val name = binding.editName.text?.trim().toString()
+        val careOf = binding.editCAREOF.text?.trim().toString()
+        val mobile = binding.editMobile.text?.trim().toString()
+        val email = binding.EditEmail.text?.trim().toString()
+        val presentAddress = binding.editPresentAddress.text?.trim().toString()
+        val mandal = binding.editMandal.text?.trim().toString()
+        val DOB = binding.editDOB.text?.trim().toString()
+        val village = binding.editVillage.text?.trim().toString()
+        val Business = binding.editBusiness.text?.trim().toString()
+        val ward = binding.editWard.text?.trim().toString()
+        val pincode = binding.editPincode.text?.trim().toString()
         val password = binding.passwordEdit.text?.trim().toString()
+        val permanentAddress = binding.editPermanentAddress.text?.trim().toString()
+        val ocuppation = binding.editOcuppation.text?.trim().toString()
+        val company = binding.editCompany.text?.trim().toString()
+        val designation = binding.editDesignation.text?.trim().toString()
+        val location = binding.editLocation.text?.trim().toString()
+        val FBProfile = binding.editFBProfile.text?.trim().toString()
+        val FBFollowers = binding.editFBFollowers.text?.trim().toString()
+        val InstaProfile = binding.editInstaProfile.text?.trim().toString()
+        val InstaFollowers = binding.editInstaFollowers.text?.trim().toString()
+        val TwitterProfile = binding.editTwitterProfile.text?.trim().toString()
+        val TwitterFollowers = binding.editTwitterFollowers.text?.trim().toString()
+        val YoutubeChannel = binding.editYoutubeChannel.text?.trim().toString()
+        val YoutubeFollower = binding.editYoutubeFollower.text?.trim().toString()
+        val LinkedIn = binding.editLinkedIn.text?.trim().toString()
+        val WhatsAppNumber = binding.editWhatsAppNumber.text?.trim().toString()
+        val Telegram = binding.editTelegram.text?.trim().toString()
+        val Skills = binding.editSkills.text?.trim().toString()
+        val Volunteer = binding.editVolunteer.text?.trim().toString()
+        val Organizations = binding.editOrganizations.text?.trim().toString()
+        val MaritalStatus = binding.editMaritalStatus.text?.trim().toString()
+        val BloodGroup = binding.editBloodGroup.text?.trim().toString()
+        val TwoWheeler = binding.editTwoWheeler.text?.trim().toString()
+        val FourWheeler = binding.editFourWheeler.text?.trim().toString()
+
 
         ViewController.hideKeyBoard(this@RegisterActivity )
 
@@ -212,16 +256,8 @@ class RegisterActivity : AppCompatActivity() {
             ViewController.customToast(applicationContext, "Enter Mobile Number")
             return
         }
-        if (businessName.isEmpty()) {
-            ViewController.customToast(applicationContext, "Enter Business Name")
-            return
-        }
-        if (address.isEmpty()) {
+        if (presentAddress.isEmpty()) {
             ViewController.customToast(applicationContext, "Enter Address")
-            return
-        }
-        if (password.isEmpty()) {
-            ViewController.customToast(applicationContext, "Enter password")
             return
         }
         if (selectedState.isEmpty()) {
@@ -232,11 +268,15 @@ class RegisterActivity : AppCompatActivity() {
             ViewController.customToast(applicationContext, "Select Constituency")
             return
         }
+        if (password.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter password")
+            return
+        }
 
-        if (!ViewController.validateMobile(mobile)) {
+        if (!ViewController.validateEmail(email)) {
+            ViewController.customToast(applicationContext, "Enter Valid Email")
+        }else if (!ViewController.validateMobile(mobile)) {
             ViewController.customToast(applicationContext, "Enter Valid mobile number")
-        }else if (!binding.checkbox.isChecked) {
-            ViewController.customToast(applicationContext, "Please agree to the terms and conditions.")
         } else {
             ViewController.showLoading(this@RegisterActivity)
 
@@ -244,14 +284,43 @@ class RegisterActivity : AppCompatActivity() {
             val call =
                 apiServices.registerApi(
                     getString(R.string.api_key),
-                    name,
-                    mobile,
                     email,
-                    businessName,
-                    address,
                     password,
+                    mobile,
+                    name,
+                    DOB,
+                    careOf,
+                    genderName,
+                    presentAddress,
+                    Business,
+                    selectedConstituency,
                     selectedState,
-                    selectedConstituency
+                    mandal,
+                    ward,
+                    pincode,
+                    ocuppation,
+                    company,
+                    designation,
+                    location,
+                    permanentAddress,
+                    FBProfile,
+                    FBFollowers,
+                    InstaProfile,
+                    InstaFollowers,
+                    TwitterProfile,
+                    TwitterFollowers,
+                    LinkedIn,
+                    YoutubeChannel,
+                    YoutubeFollower,
+                    WhatsAppNumber,
+                    Telegram,
+                    Skills,
+                    Volunteer,
+                    Organizations,
+                    MaritalStatus,
+                    BloodGroup,
+                    TwoWheeler,
+                    FourWheeler
                 )
             call.enqueue(object : Callback<RegisterModel> {
                 override fun onResponse(
@@ -287,7 +356,6 @@ class RegisterActivity : AppCompatActivity() {
 
         }
     }
-
 
     private fun StateListApi() {
             val apiServices = RetrofitClient.apiInterface
@@ -415,11 +483,9 @@ class RegisterActivity : AppCompatActivity() {
         if (data != null) {
             selectedImageUri = data.data!!
         }
-
         if (selectedImageUri != null) {
-            binding.imgProfile.setImageURI(selectedImageUri) // Display selected image
+           // binding.imgProfile.setImageURI(selectedImageUri) // Display selected image
         }
-
     }
 
     //update profile
@@ -429,12 +495,10 @@ class RegisterActivity : AppCompatActivity() {
         return MultipartBody.Part.createFormData("image", "", requestFile)
     }
 
-
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.from_left, R.anim.to_right)
     }
-
 }

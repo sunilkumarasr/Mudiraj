@@ -63,13 +63,15 @@ class GalleryActivity : AppCompatActivity() {
     //members list
     private fun galleryListApi() {
         val constituencies = Preferences.loadStringValue(this@GalleryActivity, Preferences.constituencies, "")
+        val state_id = Preferences.loadStringValue(this@GalleryActivity, Preferences.state, "")
 
 
         val apiServices = RetrofitClient.apiInterface
         val call =
             apiServices.galleryListApi(
                 getString(R.string.api_key),
-                "66"
+                constituencies.toString(),
+                        state_id.toString()
             )
         call.enqueue(object : Callback<GalleryListModel> {
             override fun onResponse(

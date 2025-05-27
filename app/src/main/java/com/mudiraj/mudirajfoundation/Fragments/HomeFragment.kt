@@ -1,7 +1,6 @@
 package com.mudiraj.mudirajfoundation.Fragments
 
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -22,10 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.os.Handler
 import android.os.Looper
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
@@ -33,18 +29,14 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.mudiraj.mudirajfoundation.Activitys.GalleryActivity
-import com.mudiraj.mudirajfoundation.Activitys.MemberDetailsActivity
 import com.mudiraj.mudirajfoundation.Adapters.HomeBannersAdapter
 import com.mudiraj.mudirajfoundation.Adapters.HomeMembersAdapter
 import com.mudiraj.mudirajfoundation.Adapters.NewsAdapter
-import com.mudiraj.mudirajfoundation.Logins.LoginActivity
 import com.mudiraj.mudirajfoundation.Models.MemberShipListModel
 import com.mudiraj.mudirajfoundation.Models.MemberShipListResponse
 import com.mudiraj.mudirajfoundation.Models.NewsModel
 import com.mudiraj.mudirajfoundation.Models.NewsResponse
-import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.Models.TotalUsersModel
-
 
 class HomeFragment : Fragment() {
 
@@ -62,7 +54,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -76,6 +67,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun init() {
+
+        binding.txtDonateNow.setOnClickListener {
+            openUPIApp()
+        }
 
         if (!ViewController.noInterNetConnectivity(requireActivity())) {
             ViewController.showToast(requireActivity(), "Please check your connection ")
@@ -225,8 +220,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.imgQR.setOnClickListener {
-            val upiUri = "upi://pay?pa=43909649794@sbi&pn=MUDIRAJ%20FOUNDATION%20TELANGANA&mc=7407&tr=TXN123456&tn=Donation&am=1.00&cu=INR"
-            openUpiIntent(upiUri, requireActivity())
+            openUpiIntent()
         }
 
         binding.cardViewGallery.setOnClickListener {
@@ -235,35 +229,48 @@ class HomeFragment : Fragment() {
             requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
         }
 
-
     }
 
-    fun openUpiIntent(upiUri: String, context: Context) {
-        val uri = Uri.parse(upiUri)
-
-        // Try Google Pay
-        val gpayIntent = Intent(Intent.ACTION_VIEW).apply {
-            data = uri
-            setPackage("com.google.android.apps.nbu.paisa.user")
-        }
-
-        // Try PhonePe
-        val phonePeIntent = Intent(Intent.ACTION_VIEW).apply {
-            data = uri
-            setPackage("com.phonepe.app")
-        }
+    private fun openUPIApp() {
+        val upiUrl = "upi://pay?pa=43909649794@sbi&pn=MUDIRAJ%20FOUNDATION%20TELANGANA&mc=7407&tr=&tn=&am=&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIHVM3gDgQzkmM9IpOYUSLZyxo4zBZwgnpCnJFdRt0DJjAiBPBsg6WsBjzbKT71VNzQbIzpZEv/7BJYpTp2t/Yey0dQ=="
 
         try {
-            context.startActivity(gpayIntent)
-        } catch (e: Exception) {
-            try {
-                context.startActivity(phonePeIntent)
-            } catch (e: Exception) {
-                Toast.makeText(context, "No supported UPI app found", Toast.LENGTH_SHORT).show()
+            val uri = Uri.parse(upiUrl)
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            // Check if any UPI app is available
+            val packageManager = requireContext().packageManager
+
+            val resolveInfoList = packageManager.queryIntentActivities(intent, 0)
+
+            if (resolveInfoList.isNotEmpty()) {
+                val chooser = Intent.createChooser(intent, "Pay with")
+                startActivity(chooser)
+            } else {
+                Toast.makeText(requireContext(), "No UPI app found", Toast.LENGTH_SHORT).show()
             }
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
         }
     }
 
+    fun openUpiIntent() {
+        val uri = Uri.parse(
+            "upi://pay?pa=43909649794@sbi&pn=MUDIRAJ FOUNDATION TELANGANA&tn=Donation&am=&cu=INR"
+        )
+
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = uri
+        }
+
+        val chooser = Intent.createChooser(intent, "Pay using UPI")
+
+        // Check if there's an app that can handle this intent
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(chooser)
+        } else {
+            Toast.makeText(requireContext(), "No UPI app found on this device.", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private fun totalUsersApi() {
         val apiServices = RetrofitClient.apiInterface
@@ -301,12 +308,14 @@ class HomeFragment : Fragment() {
     //banners
     private fun bannerListApi() {
         val constituencies = Preferences.loadStringValue(requireActivity(), Preferences.constituencies, "")
+        val state = Preferences.loadStringValue(requireActivity(), Preferences.state, "")
 
         val apiServices = RetrofitClient.apiInterface
         val call =
             apiServices.bannerListApi(
                 getString(R.string.api_key),
-                constituencies.toString()
+                constituencies.toString(),
+                state.toString()
             )
         call.enqueue(object : Callback<BannersModel> {
             override fun onResponse(
@@ -361,10 +370,15 @@ class HomeFragment : Fragment() {
 
     //members list
     private fun memberShipListApi() {
+        val constituencies = Preferences.loadStringValue(requireActivity(), Preferences.constituencies, "")
+        val state = Preferences.loadStringValue(requireActivity(), Preferences.state, "")
+
         val apiServices = RetrofitClient.apiInterface
         val call =
             apiServices.memberShipListApi(
-                getString(R.string.api_key)
+                getString(R.string.api_key),
+                constituencies.toString(),
+                state.toString()
             )
         call.enqueue(object : Callback<MemberShipListModel> {
             override fun onResponse(
@@ -397,11 +411,6 @@ class HomeFragment : Fragment() {
         binding.recyclerview.apply {
             binding.recyclerview.layoutManager = LinearLayoutManager(context)
             binding.recyclerview.adapter  = HomeMembersAdapter(requireActivity(), membersList) { item ->
-                val intent = Intent(activity, MemberDetailsActivity::class.java).apply {
-                    putExtra("membershipId", item.membershipId)
-                }
-                startActivity(intent)
-                requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
             }
         }
     }
@@ -409,12 +418,14 @@ class HomeFragment : Fragment() {
     //News banners
     private fun newsListApi() {
         val constituencies = Preferences.loadStringValue(requireActivity(), Preferences.constituencies, "")
+        val state = Preferences.loadStringValue(requireActivity(), Preferences.state, "")
 
         val apiServices = RetrofitClient.apiInterface
         val call =
             apiServices.newsListApi(
                 getString(R.string.api_key),
-                constituencies.toString()
+                constituencies.toString(),
+                state.toString()
             )
         call.enqueue(object : Callback<NewsModel> {
             override fun onResponse(

@@ -3,6 +3,7 @@ package com.mudiraj.mudirajfoundation.Config
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 
 object Preferences {
 
@@ -22,6 +23,43 @@ object Preferences {
     const val minAmount = "minAmount"
     const val cityName = "cityName"
 
+    const val id = "id"
+    const val role = "role"
+    const val date_of_birth = "date_of_birth"
+    const val care_of = "care_of"
+    const val gender = "gender"
+    const val password = "password"
+    const val image = "image"
+    const val business_name = "business_name"
+    const val mandal = "mandal"
+    const val ward = "ward"
+    const val pin_code = "pin_code"
+    const val current_occupation = "current_occupation"
+    const val organization_company = "organization_company"
+    const val designation = "designation"
+    const val work_location = "work_location"
+    const val permanent_address = "permanent_address"
+    const val membership_type = "membership_type"
+    const val amount = "amount"
+    const val facebook_profile = "facebook_profile"
+    const val facebook_followers = "facebook_followers"
+    const val instagram_profile = "instagram_profile"
+    const val instagram_followes = "instagram_followes"
+    const val twitter_x_profile = "twitter_x_profile"
+    const val twitter_x_follwers = "twitter_x_follwers"
+    const val linkedin_profile = "linkedin_profile"
+    const val youtube_channel = "youtube_channel"
+    const val youtube_followers = "youtube_followers"
+    const val whatsapp_number = "whatsapp_number"
+    const val telegram_username_channel = "telegram_username_channel"
+    const val skills_interests = "skills_interests"
+    const val volunteer_experience = "volunteer_experience"
+    const val affiliated_organizations = "affiliated_organizations"
+    const val marital_status = "marital_status"
+    const val blood_group = "blood_group"
+    const val two_wheeler = "two_wheeler"
+    const val four_wheeler = "four_wheeler"
+    const val status = "status"
 
 
     private fun getSharedPreferences(context: Context): SharedPreferences {
