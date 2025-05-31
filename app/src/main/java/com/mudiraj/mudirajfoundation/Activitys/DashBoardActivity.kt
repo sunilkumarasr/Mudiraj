@@ -1,8 +1,6 @@
 package com.mudiraj.mudirajfoundation.Activitys
 
 import android.content.Intent
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,18 +16,11 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.airbnb.lottie.LottieAnimationView
-import com.airbnb.lottie.LottieProperty
-import com.airbnb.lottie.model.KeyPath
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.mudiraj.mudirajfoundation.Adapters.Cart.CartListResponse
 import com.mudiraj.mudirajfoundation.Api.RetrofitClient
 import com.mudiraj.mudirajfoundation.Config.Preferences
 import com.mudiraj.mudirajfoundation.Config.ViewController
-import com.mudiraj.mudirajfoundation.Logins.LoginActivity
-import com.mudiraj.mudirajfoundation.Models.CityModel
-import com.mudiraj.mudirajfoundation.Models.SettingsModel
 import com.mudiraj.mudirajfoundation.Models.StateListResponse
 import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.R

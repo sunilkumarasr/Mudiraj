@@ -37,35 +37,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activitys.MyOrderDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activitys.CategoriesActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activitys.AllProductsListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Activitys.ContactUsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activitys.HelpAndSupportActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activitys.CheckOutActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activitys.EditAddressActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activitys.CategoriesWiseProductsListActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -97,19 +69,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activitys.CartActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Activitys.FavouriteActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activitys.NotificationsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activitys.ProductsDetailsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

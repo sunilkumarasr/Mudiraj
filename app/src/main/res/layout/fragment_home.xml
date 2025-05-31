@@ -412,58 +412,6 @@
                     android:src="@drawable/banner_durga"
                     android:scaleType="fitXY"/>
 
-                <LinearLayout
-                   android:visibility="gone"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:background="@color/orange"
-                   android:layout_marginTop="10dp"
-                   android:layout_marginBottom="10dp">
-                   <LinearLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:padding="10dp"
-                       android:layout_weight="1"
-                       android:orientation="vertical">
-                       <TextView
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center_horizontal"
-                           android:gravity="center_horizontal"
-                           android:text="ప్రతి రోజు పెదమ్మ తల్లికి ధూప - ధీప నైవేద్యం ఆరాధన చేద్దాం."
-                           android:textColor="@color/colorPrimary"
-                           android:textSize="12sp"
-                           android:textStyle="bold" />
-                       <TextView
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center_horizontal"
-                           android:gravity="center_horizontal"
-                           android:text="ఆదివారం మద్యానికి ధురమగా ఉందం."
-                           android:layout_marginTop="5dp"
-                           android:textColor="@color/blue"
-                           android:textSize="12sp"
-                           android:textStyle="bold" />
-                       <TextView
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center_horizontal"
-                           android:gravity="center_horizontal"
-                           android:text="పెదమ్మ తల్లి ఆలయాన్ని కూతుంధా సమేతంగా దర్శించుకుందాం"
-                           android:layout_marginTop="5dp"
-                           android:textColor="@color/green"
-                           android:textSize="12sp"
-                           android:textStyle="bold" />
-                   </LinearLayout>
-                   <androidx.appcompat.widget.AppCompatImageView
-                       android:id="@+id/img_durgamma"
-                       android:layout_width="70dp"
-                       android:layout_height="70dp"
-                       android:src="@drawable/durgamma"
-                       android:layout_gravity="center_vertical"/>
-
-               </LinearLayout>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

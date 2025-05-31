@@ -13,7 +13,6 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mudiraj.mudirajfoundation.Activitys.AboutUsActivity
-import com.mudiraj.mudirajfoundation.Activitys.CartActivity
 import com.mudiraj.mudirajfoundation.Activitys.DashBoardActivity
 import com.mudiraj.mudirajfoundation.Activitys.DeleteAccountActivity
 import com.mudiraj.mudirajfoundation.Activitys.EditProfileActivity
@@ -86,14 +85,6 @@ class MenuFragment : Fragment() ,View.OnClickListener{
                 startActivity(intent)
                 requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
             }
-            R.id.linearCart -> {
-                val animations = ViewController.animation()
-                view.startAnimation(animations)
-                val intent = Intent(requireActivity(), CartActivity::class.java)
-                startActivity(intent)
-                requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
-            }
-
             R.id.linearShare -> {
                 val animations = ViewController.animation()
                 view.startAnimation(animations)
