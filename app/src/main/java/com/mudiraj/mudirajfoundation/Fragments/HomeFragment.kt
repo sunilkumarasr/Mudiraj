@@ -21,6 +21,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.os.Handler
 import android.os.Looper
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.CheckBox
+import android.widget.LinearLayout
+import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +34,8 @@ import kotlin.math.abs
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.mudiraj.mudirajfoundation.Activitys.DashBoardActivity
 import com.mudiraj.mudirajfoundation.Activitys.GalleryActivity
 import com.mudiraj.mudirajfoundation.Adapters.HomeBannersAdapter
 import com.mudiraj.mudirajfoundation.Adapters.HomeMembersAdapter
@@ -36,6 +44,8 @@ import com.mudiraj.mudirajfoundation.Models.MemberShipListModel
 import com.mudiraj.mudirajfoundation.Models.MemberShipListResponse
 import com.mudiraj.mudirajfoundation.Models.NewsModel
 import com.mudiraj.mudirajfoundation.Models.NewsResponse
+import com.mudiraj.mudirajfoundation.Models.StateListResponse
+import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.Models.TotalUsersModel
 
 class HomeFragment : Fragment() {
@@ -49,6 +59,11 @@ class HomeFragment : Fragment() {
     //banners
     private lateinit var handlerNews : Handler
     private lateinit var adapterNews: NewsAdapter
+
+    var selectedState: String = ""
+    var selectedStateName: String = ""
+    var selectedConstituency: String = ""
+    var selectedConstituencyName: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -229,46 +244,42 @@ class HomeFragment : Fragment() {
             requireActivity().overridePendingTransition(R.anim.from_right, R.anim.to_left)
         }
 
+
+        binding.cardLocation.setOnClickListener {
+            locationSelectDialog()
+        }
+
     }
 
     private fun openUPIApp() {
-        val upiUrl = "upi://pay?pa=43909649794@sbi&pn=MUDIRAJ%20FOUNDATION%20TELANGANA&mc=7407&tr=&tn=&am=&cu=INR&url=&mode=02&purpose=00&orgid=180102&sign=MEQCIHVM3gDgQzkmM9IpOYUSLZyxo4zBZwgnpCnJFdRt0DJjAiBPBsg6WsBjzbKT71VNzQbIzpZEv/7BJYpTp2t/Yey0dQ=="
+        val uri = Uri.parse(
+            "upi://pay?pa=mudirajfoundations@okaxis&pn=MUDIRAJ%20FOUNDATION%20TELANGANA&mc=7407&mode=02&purpose=00"
+        )
 
-        try {
-            val uri = Uri.parse(upiUrl)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            // Check if any UPI app is available
-            val packageManager = requireContext().packageManager
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = uri
 
-            val resolveInfoList = packageManager.queryIntentActivities(intent, 0)
-
-            if (resolveInfoList.isNotEmpty()) {
-                val chooser = Intent.createChooser(intent, "Pay with")
-                startActivity(chooser)
-            } else {
-                Toast.makeText(requireContext(), "No UPI app found", Toast.LENGTH_SHORT).show()
-            }
-        } catch (e: Exception) {
-            Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+        // Check if there is an app to handle this
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(intent)
+        } else {
+            Toast.makeText(requireActivity(), "No UPI app found to handle this request", Toast.LENGTH_SHORT).show()
         }
     }
 
     fun openUpiIntent() {
         val uri = Uri.parse(
-            "upi://pay?pa=43909649794@sbi&pn=MUDIRAJ FOUNDATION TELANGANA&tn=Donation&am=&cu=INR"
+            "upi://pay?pa=mudirajfoundations@okaxis&pn=MUDIRAJ%20FOUNDATION%20TELANGANA&mc=7407&mode=02&purpose=00"
         )
 
-        val intent = Intent(Intent.ACTION_VIEW).apply {
-            data = uri
-        }
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = uri
 
-        val chooser = Intent.createChooser(intent, "Pay using UPI")
-
-        // Check if there's an app that can handle this intent
+        // Check if there is an app to handle this
         if (intent.resolveActivity(requireActivity().packageManager) != null) {
-            startActivity(chooser)
+            startActivity(intent)
         } else {
-            Toast.makeText(requireContext(), "No UPI app found on this device.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "No UPI app found to handle this request", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -309,6 +320,11 @@ class HomeFragment : Fragment() {
     private fun bannerListApi() {
         val constituencies = Preferences.loadStringValue(requireActivity(), Preferences.constituencies, "")
         val state = Preferences.loadStringValue(requireActivity(), Preferences.state, "")
+        val stateName = Preferences.loadStringValue(requireActivity(), Preferences.stateName, "")
+        val constituenciesName = Preferences.loadStringValue(requireActivity(), Preferences.constituenciesName, "")
+        binding.txtState.text = stateName
+        binding.txtConstituency.text = constituenciesName
+
 
         val apiServices = RetrofitClient.apiInterface
         val call =
@@ -475,6 +491,178 @@ class HomeFragment : Fragment() {
             page.scaleY = 0.85f + r * 0.14f
         }
         binding.viewPagerNews.setPageTransformer(transformer)
+    }
+
+
+    private fun locationSelectDialog() {
+        val bottomSheetDialog = BottomSheetDialog(requireActivity(), R.style.AppBottomSheetDialogTheme)
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_location, null)
+        bottomSheetDialog.setContentView(view)
+
+        val checkboxState = view.findViewById<CheckBox>(R.id.checkboxState)
+        val checkboxCity = view.findViewById<CheckBox>(R.id.checkboxCity)
+        val StateSpinner = view.findViewById<Spinner>(R.id.StateSpinner)
+        val ConstituenciesSpinner = view.findViewById<Spinner>(R.id.ConstituenciesSpinner)
+        val linearSubmit = view.findViewById<LinearLayout>(R.id.linearSubmit)
+
+        if (!ViewController.noInterNetConnectivity(requireActivity())) {
+            ViewController.customToast(requireActivity(), "Please check your connection ")
+        } else {
+            StateListApi(StateSpinner)
+        }
+
+        StateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val state = parent.getItemAtPosition(position) as StateListResponse
+                selectedState = state.id
+                selectedStateName = state.name
+                ConstituencyListApi(ConstituenciesSpinner, selectedState)
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+        ConstituenciesSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                val state = parent.getItemAtPosition(position) as StateListResponse
+                selectedConstituency = state.id
+                selectedConstituencyName = state.name
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+            }
+        }
+
+        linearSubmit.setOnClickListener {
+            val animations = ViewController.animation()
+            view.startAnimation(animations)
+
+            if (selectedState.isEmpty()) {
+                ViewController.showToast(requireActivity(), "Select State")
+            } else if (selectedConstituency.isEmpty()) {
+                ViewController.showToast(requireActivity(), "Select Constituency")
+            } else {
+                if (checkboxState.isChecked && checkboxCity.isChecked) {
+                    Preferences.saveStringValue(requireActivity(), Preferences.state, selectedState)
+                    Preferences.saveStringValue(requireActivity(), Preferences.stateName, selectedStateName)
+                    Preferences.saveStringValue(requireActivity(), Preferences.constituencies, selectedConstituency)
+                    Preferences.saveStringValue(requireActivity(), Preferences.constituenciesName, selectedConstituencyName)
+
+                    bottomSheetDialog.dismiss()
+
+                    val intent = Intent(requireActivity(), DashBoardActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().overridePendingTransition(0, 0)
+
+                } else if (checkboxState.isChecked) {
+                    Preferences.saveStringValue(requireActivity(), Preferences.state, selectedState)
+                    Preferences.saveStringValue(requireActivity(), Preferences.stateName, selectedStateName)
+                    Preferences.saveStringValue(requireActivity(), Preferences.constituencies, "")
+                    Preferences.saveStringValue(requireActivity(), Preferences.constituenciesName, "")
+
+                    bottomSheetDialog.dismiss()
+
+                    val intent = Intent(requireActivity(), DashBoardActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().overridePendingTransition(0, 0)
+
+                } else {
+                    Toast.makeText(requireActivity(), "Please check state", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        bottomSheetDialog.show()
+    }
+    private fun StateListApi(StateSpinner: Spinner) {
+        val apiServices = RetrofitClient.apiInterface
+        val call =
+            apiServices.StateListApi(
+                getString(R.string.api_key)
+            )
+        call.enqueue(object : Callback<StateModel> {
+            override fun onResponse(
+                call: Call<StateModel>,
+                response: Response<StateModel>
+            ) {
+                ViewController.hideLoading()
+                try {
+                    if (response.isSuccessful) {
+                        val stateList = response.body()?.response
+                        if (response.body()?.status == true && stateList != null) {
+                            val stateNames = stateList.map { it.name }
+                            val adapter = object : ArrayAdapter<StateListResponse>(
+                                requireActivity(),
+                                android.R.layout.simple_spinner_item,
+                                stateList
+                            ) {
+                                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                    val view = super.getView(position, convertView, parent)
+                                    (view as TextView).text = stateList[position].name
+                                    return view
+                                }
+                                override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                    val view = super.getDropDownView(position, convertView, parent)
+                                    (view as TextView).text = stateList[position].name
+                                    return view
+                                }
+                            }
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                            StateSpinner.adapter = adapter
+                        }
+                    }
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                }
+            }
+            override fun onFailure(call: Call<StateModel>, t: Throwable) {
+                Log.e("terror",t.message.toString())
+            }
+        })
+    }
+    private fun ConstituencyListApi(ConstituenciesSpinner: Spinner, selectedState: String) {
+        val apiServices = RetrofitClient.apiInterface
+        val call =
+            apiServices.ConstituencyListApi(
+                getString(R.string.api_key),
+                selectedState
+            )
+        call.enqueue(object : Callback<StateModel> {
+            override fun onResponse(
+                call: Call<StateModel>,
+                response: Response<StateModel>
+            ) {
+                ViewController.hideLoading()
+                try {
+                    if (response.isSuccessful) {
+                        val stateList = response.body()?.response
+                        if (response.body()?.status == true && stateList != null) {
+                            val constituenciesNames = stateList.map { it.name }
+                            val adapter = object : ArrayAdapter<StateListResponse>(
+                                requireActivity(),
+                                android.R.layout.simple_spinner_item,
+                                stateList
+                            ) {
+                                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                    val view = super.getView(position, convertView, parent)
+                                    (view as TextView).text = stateList[position].name
+                                    return view
+                                }
+                                override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                                    val view = super.getDropDownView(position, convertView, parent)
+                                    (view as TextView).text = stateList[position].name
+                                    return view
+                                }
+                            }
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                            ConstituenciesSpinner.adapter = adapter
+                        }
+                    }
+                } catch (e: NullPointerException) {
+                    e.printStackTrace()
+                }
+            }
+            override fun onFailure(call: Call<StateModel>, t: Throwable) {
+                Log.e("terror",t.message.toString())
+            }
+        })
     }
 
 

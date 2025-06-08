@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -43,9 +45,6 @@ class DashBoardActivity : AppCompatActivity() {
     private var isHomeFragmentDisplayed = false
 
 
-    var selectedState: String = ""
-    var selectedConstituency: String = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -75,10 +74,6 @@ class DashBoardActivity : AppCompatActivity() {
             val intent = Intent(this@DashBoardActivity, AddMembersActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.from_right, R.anim.to_left)
-        }
-
-        binding.cardLocation.setOnClickListener {
-            locationSelectDialog()
         }
 
     }
@@ -121,159 +116,6 @@ class DashBoardActivity : AppCompatActivity() {
             }
         }
     }
-
-
-    private fun locationSelectDialog() {
-        val bottomSheetDialog = BottomSheetDialog(this@DashBoardActivity, R.style.AppBottomSheetDialogTheme)
-        val view = layoutInflater.inflate(R.layout.bottom_sheet_location, null)
-        bottomSheetDialog.setContentView(view)
-
-        val StateSpinner = view.findViewById<Spinner>(R.id.StateSpinner)
-        val ConstituenciesSpinner = view.findViewById<Spinner>(R.id.ConstituenciesSpinner)
-        val linearSubmit = view.findViewById<LinearLayout>(R.id.linearSubmit)
-
-
-        if (!ViewController.noInterNetConnectivity(applicationContext)) {
-            ViewController.customToast(applicationContext, "Please check your connection ")
-        } else {
-            StateListApi(StateSpinner)
-        }
-
-
-        StateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val state = parent.getItemAtPosition(position) as StateListResponse
-                selectedState = state.id
-                val selectedStateName = state.name
-                ConstituencyListApi(ConstituenciesSpinner, selectedState)
-            }
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
-        ConstituenciesSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val state = parent.getItemAtPosition(position) as StateListResponse
-                selectedConstituency = state.id
-                val selectedStateName = state.name
-            }
-            override fun onNothingSelected(parent: AdapterView<*>) {
-            }
-        }
-
-        linearSubmit.setOnClickListener {
-            val animations = ViewController.animation()
-            view.startAnimation(animations)
-            if (selectedState.isEmpty()) {
-                ViewController.showToast(applicationContext, "Select State")
-            }else if (selectedConstituency.isEmpty()) {
-                ViewController.showToast(applicationContext, "Select Constituency")
-            }else{
-                Preferences.saveStringValue(this@DashBoardActivity, Preferences.state, selectedState)
-                Preferences.saveStringValue(this@DashBoardActivity, Preferences.constituencies, selectedConstituency)
-
-                bottomSheetDialog.dismiss()
-
-                val intent = Intent(this@DashBoardActivity, DashBoardActivity::class.java)
-                startActivity(intent)
-                overridePendingTransition(0, 0)
-            }
-        }
-
-        bottomSheetDialog.show()
-    }
-    private fun StateListApi(StateSpinner: Spinner) {
-        val apiServices = RetrofitClient.apiInterface
-        val call =
-            apiServices.StateListApi(
-                getString(R.string.api_key)
-            )
-        call.enqueue(object : Callback<StateModel> {
-            override fun onResponse(
-                call: Call<StateModel>,
-                response: Response<StateModel>
-            ) {
-                ViewController.hideLoading()
-                try {
-                    if (response.isSuccessful) {
-                        val stateList = response.body()?.response
-                        if (response.body()?.status == true && stateList != null) {
-                            val stateNames = stateList.map { it.name }
-                            val adapter = object : ArrayAdapter<StateListResponse>(
-                                this@DashBoardActivity,
-                                android.R.layout.simple_spinner_item,
-                                stateList
-                            ) {
-                                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                                    val view = super.getView(position, convertView, parent)
-                                    (view as TextView).text = stateList[position].name
-                                    return view
-                                }
-                                override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-                                    val view = super.getDropDownView(position, convertView, parent)
-                                    (view as TextView).text = stateList[position].name
-                                    return view
-                                }
-                            }
-                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                            StateSpinner.adapter = adapter
-                        }
-                    }
-                } catch (e: NullPointerException) {
-                    e.printStackTrace()
-                }
-            }
-            override fun onFailure(call: Call<StateModel>, t: Throwable) {
-                Log.e("terror",t.message.toString())
-            }
-        })
-    }
-    private fun ConstituencyListApi(ConstituenciesSpinner: Spinner, selectedState: String) {
-        val apiServices = RetrofitClient.apiInterface
-        val call =
-            apiServices.ConstituencyListApi(
-                getString(R.string.api_key),
-                selectedState
-            )
-        call.enqueue(object : Callback<StateModel> {
-            override fun onResponse(
-                call: Call<StateModel>,
-                response: Response<StateModel>
-            ) {
-                ViewController.hideLoading()
-                try {
-                    if (response.isSuccessful) {
-                        val stateList = response.body()?.response
-                        if (response.body()?.status == true && stateList != null) {
-                            val constituenciesNames = stateList.map { it.name }
-                            val adapter = object : ArrayAdapter<StateListResponse>(
-                                this@DashBoardActivity,
-                                android.R.layout.simple_spinner_item,
-                                stateList
-                            ) {
-                                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                                    val view = super.getView(position, convertView, parent)
-                                    (view as TextView).text = stateList[position].name
-                                    return view
-                                }
-                                override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-                                    val view = super.getDropDownView(position, convertView, parent)
-                                    (view as TextView).text = stateList[position].name
-                                    return view
-                                }
-                            }
-                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                            ConstituenciesSpinner.adapter = adapter
-                        }
-                    }
-                } catch (e: NullPointerException) {
-                    e.printStackTrace()
-                }
-            }
-            override fun onFailure(call: Call<StateModel>, t: Throwable) {
-                Log.e("terror",t.message.toString())
-            }
-        })
-    }
-
 
 
     override fun onBackPressed() {

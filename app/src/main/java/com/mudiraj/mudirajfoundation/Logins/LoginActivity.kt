@@ -40,7 +40,9 @@ class LoginActivity : AppCompatActivity() {
 
 
     var selectedState: String = ""
+    var selectedStateName: String = ""
     var selectedConstituency: String = ""
+    var selectedConstituencyName: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -241,7 +243,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val state = parent.getItemAtPosition(position) as StateListResponse
                 selectedState = state.id
-                val selectedStateName = state.name
+                selectedStateName = state.name
                 ConstituencyListApi(ConstituenciesSpinner, selectedState)
             }
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -250,7 +252,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val state = parent.getItemAtPosition(position) as StateListResponse
                 selectedConstituency = state.id
-                val selectedStateName = state.name
+                selectedConstituencyName = state.name
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
@@ -268,8 +270,9 @@ class LoginActivity : AppCompatActivity() {
                 ViewController.customToast(applicationContext, "Select Constituency")
             }else{
                 Preferences.saveStringValue(this@LoginActivity, Preferences.state, selectedState)
+                Preferences.saveStringValue(this@LoginActivity, Preferences.stateName, selectedStateName)
                 Preferences.saveStringValue(this@LoginActivity, Preferences.constituencies, selectedConstituency)
-
+                Preferences.saveStringValue(this@LoginActivity, Preferences.constituenciesName, selectedConstituencyName)
 
                 val intent = Intent(this@LoginActivity, DashBoardActivity::class.java)
                 startActivity(intent)
