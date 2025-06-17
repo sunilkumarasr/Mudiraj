@@ -22,6 +22,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.mudiraj.mudirajfoundation.Activitys.DashBoardActivity
 import com.mudiraj.mudirajfoundation.Api.RetrofitClient
@@ -100,8 +101,11 @@ class RegisterActivity : AppCompatActivity() {
     val genderList = listOf("Male", "Female", "Other")
     var genderName: String = ""
 
+    //more fields
+    var moreFieldsStatus: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -202,6 +206,19 @@ class RegisterActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
+
+        binding.txtMore.setOnClickListener {
+            if (!moreFieldsStatus){
+                moreFieldsStatus = true
+                binding.txtMore.text = "Less.."
+                binding.linearMore.visibility = View.VISIBLE
+            }else{
+                moreFieldsStatus = false
+                binding.txtMore.text = "More.."
+                binding.linearMore.visibility = View.GONE
+            }
+        }
+
     }
 
     private fun registerApi() {
@@ -248,16 +265,18 @@ class RegisterActivity : AppCompatActivity() {
             ViewController.customToast(applicationContext, "Enter Your Name")
             return
         }
-        if (email.isEmpty()) {
-            ViewController.customToast(applicationContext, "Enter Email")
-            return
-        }
+
         if (mobile.isEmpty()) {
             ViewController.customToast(applicationContext, "Enter Mobile Number")
             return
         }
-        if (presentAddress.isEmpty()) {
-            ViewController.customToast(applicationContext, "Enter Address")
+        if (email.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Email")
+            return
+        }
+
+        if (Business.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Business Name")
             return
         }
         if (selectedState.isEmpty()) {
@@ -268,6 +287,15 @@ class RegisterActivity : AppCompatActivity() {
             ViewController.customToast(applicationContext, "Select Constituency")
             return
         }
+        if (mandal.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Your Mandal")
+            return
+        }
+        if (village.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Your village")
+            return
+        }
+
         if (password.isEmpty()) {
             ViewController.customToast(applicationContext, "Enter password")
             return

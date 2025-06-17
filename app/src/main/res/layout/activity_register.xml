@@ -113,135 +113,6 @@
                                 android:textSize="15sp" />
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="S/o / D/o / W/o: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editCAREOF"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter  S/o / D/o / W/o:"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Date of Birth"
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editDOB"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter your Date of Birth"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Gender:"
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-                            <Spinner
-                                android:id="@+id/GenderSpinner"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:textSize="15sp"
-                                android:singleLine="true"/>
-                        </LinearLayout>
-
-                        <TextView
-                            android:visibility="gone"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Photo: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:visibility="gone"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:id="@+id/txtImage"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Attach Photo"
-                                android:singleLine="true"
-                                android:layout_gravity="center_vertical"
-                                android:gravity="center_vertical"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="18dp"
-                            android:text="Contact Information"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="17dp"
-                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -272,6 +143,38 @@
                                 android:singleLine="true"
                                 android:textSize="15sp" />
                         </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Email Id: "
+                            android:textColor="@color/darkGray"
+                            android:textSize="13dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/editbox_round"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/EditEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@null"
+                                android:hint="Enter email Id"
+                                android:singleLine="true"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -308,7 +211,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="10dp"
-                            android:text="Email Id: "
+                            android:text="Gender:"
                             android:textColor="@color/darkGray"
                             android:textSize="13dp" />
 
@@ -320,77 +223,14 @@
                             android:layout_marginRight="15dp"
                             android:background="@drawable/editbox_round"
                             android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/EditEmail"
+                            <Spinner
+                                android:id="@+id/GenderSpinner"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter email Id"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Present Adress: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editPresentAddress"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Present Address"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Permanent Address: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editPermanentAddress"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Permanent Address "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:singleLine="true"/>
                         </LinearLayout>
 
                         <TextView
@@ -476,6 +316,7 @@
                                 android:textSize="15sp" />
                         </LinearLayout>
 
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -506,710 +347,6 @@
                                 android:textSize="15sp" />
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Ward: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editWard"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Ward"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Pincode: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editPincode"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Pincode"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Current Ocuppation: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editOcuppation"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Current ocuppation"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Organization/Company: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editCompany"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Organization/Company"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Designation/Role: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editDesignation"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Designation/Role"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Work Location: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editLocation"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Work Location"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="18dp"
-                            android:text="Social Media Links"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="17dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="15dp"
-                            android:text="Facebook Profile: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editFBProfile"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Facebook profile"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editFBFollowers"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Facebook Followers"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Instagram Profile: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editInstaProfile"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Instagram profile"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editInstaFollowers"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Instagram Followers"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Twitter (X) Profile: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTwitterProfile"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Twitter(X) Profile"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTwitterFollowers"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Twitter(X) Followers"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Youtube Channel: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editYoutubeChannel"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Youtube Channel"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editYoutubeFollower"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Youtube Followers"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text="LinkedIn Profile: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editLinkedIn"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter LinkedIn Profile"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" Whatsapp Number: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editWhatsAppNumber"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Whatsapp Number "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" Telegram Username/Channel: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTelegram"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Telegram Username/Channel "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="18dp"
-                            android:text=" Additional Information (If Any)"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="17dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="15dp"
-                            android:text=" Skills /Interests: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editSkills"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Skills /Interest "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" Volunteer Experience: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editVolunteer"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Volunteer Experience  "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" Affiliated Organization: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editOrganizations"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Affiliated Organizations   "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" Marital Status: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editMaritalStatus"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter  Marital Status"
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" Blood Group : "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editBloodGroup"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Blood Group "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" Two Wheeler: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTwoWheeler"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Two Wheeler is there "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="10dp"
-                            android:text=" Four Wheeler: "
-                            android:textColor="@color/darkGray"
-                            android:textSize="13dp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="@drawable/editbox_round"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editFourWheeler"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@null"
-                                android:hint="Enter Four Wheeler is there "
-                                android:singleLine="true"
-                                android:textSize="15sp" />
-                        </LinearLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -1251,6 +388,882 @@
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginEnd="10dp"
                                 android:src="@drawable/close_eye_ic" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/txtMore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="More..."
+                            android:textColor="@color/selectedRed"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:id="@+id/linearMore"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="S/o / D/o / W/o: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editCAREOF"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter  S/o / D/o / W/o:"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Date of Birth"
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editDOB"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter your Date of Birth"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Photo: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/txtImage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Attach Photo"
+                                    android:singleLine="true"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_vertical"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Present Adress: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editPresentAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Present Address"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Permanent Address: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editPermanentAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Permanent Address "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Ward: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editWard"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Ward"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Pincode: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editPincode"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Pincode"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Current Ocuppation: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editOcuppation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Current ocuppation"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Organization/Company: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editCompany"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Organization/Company"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Designation/Role: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editDesignation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Designation/Role"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Work Location: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editLocation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Work Location"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="18dp"
+                                android:text="Social Media Links"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="17dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:text="Facebook Profile: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editFBProfile"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Facebook profile"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editFBFollowers"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Facebook Followers"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Instagram Profile: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editInstaProfile"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Instagram profile"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editInstaFollowers"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Instagram Followers"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Twitter (X) Profile: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTwitterProfile"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Twitter(X) Profile"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTwitterFollowers"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Twitter(X) Followers"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Youtube Channel: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editYoutubeChannel"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Youtube Channel"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editYoutubeFollower"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Youtube Followers"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text="LinkedIn Profile: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editLinkedIn"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter LinkedIn Profile"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text=" Whatsapp Number: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editWhatsAppNumber"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Whatsapp Number "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text=" Telegram Username/Channel: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTelegram"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Telegram Username/Channel "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="18dp"
+                                android:text=" Additional Information (If Any)"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="17dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="15dp"
+                                android:text=" Skills /Interests: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editSkills"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Skills /Interest "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text=" Volunteer Experience: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editVolunteer"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Volunteer Experience  "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text=" Affiliated Organization: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editOrganizations"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Affiliated Organizations   "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text=" Marital Status: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editMaritalStatus"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter  Marital Status"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text=" Blood Group : "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editBloodGroup"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Blood Group "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text=" Two Wheeler: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTwoWheeler"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Two Wheeler is there "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="10dp"
+                                android:text=" Four Wheeler: "
+                                android:textColor="@color/darkGray"
+                                android:textSize="13dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/editbox_round"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editFourWheeler"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:background="@null"
+                                    android:hint="Enter Four Wheeler is there "
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
                         </LinearLayout>
 
 

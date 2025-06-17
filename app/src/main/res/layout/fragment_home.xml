@@ -15,6 +15,118 @@
             android:src="@drawable/top_banner"
             android:scaleType="fitXY"/>
 
+
+        <LinearLayout
+            android:id="@+id/cardLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:id="@+id/relative_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/round_light_yellow">
+                <TextView
+                    android:id="@+id/txtState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="state"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relativeDistrict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:background="@drawable/round_light_yellow">
+                <TextView
+                    android:id="@+id/txtDistrict"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="District"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relative_niyojakavargam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:background="@drawable/round_light_yellow">
+                <TextView
+                    android:id="@+id/txtConstituency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Constituency"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relativeMandal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/round_light_yellow">
+                <TextView
+                    android:id="@+id/txtMandal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Mandal"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relativeVillage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/round_light_yellow">
+                <TextView
+                    android:id="@+id/txtVillage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Village"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,57 +138,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_weight="1">
-                <LinearLayout
-                    android:id="@+id/cardLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="10dp">
-                    <RelativeLayout
-                        android:id="@+id/relative_niyojakavargam"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="2dp"
-                        android:background="@drawable/round_light_yellow">
-                        <TextView
-                            android:id="@+id/txtConstituency"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:maxLines="2"
-                            android:text=""
-                            android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="11sp"
-                            android:textStyle="bold"/>
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/relative_state"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="2dp"
-                        android:layout_marginStart="3dp"
-                        android:layout_marginEnd="5dp"
-                        android:background="@drawable/round_light_yellow">
-                        <TextView
-                            android:id="@+id/txtState"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:maxLines="2"
-                            android:text=""
-                            android:layout_gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="11sp"
-                            android:textStyle="bold"/>
-                    </RelativeLayout>
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginStart="15dp"

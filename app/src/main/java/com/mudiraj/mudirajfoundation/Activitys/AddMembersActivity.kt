@@ -23,6 +23,7 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -102,7 +103,11 @@ class AddMembersActivity : AppCompatActivity() {
     private val IMAGE_PICK_CODE = 1000
     private var selectedImageUri: Uri? = null
 
+    //more fields
+    var moreFieldsStatus: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -191,6 +196,17 @@ class AddMembersActivity : AppCompatActivity() {
             }
         }
 
+        binding.txtMore.setOnClickListener {
+            if (!moreFieldsStatus){
+                moreFieldsStatus = true
+                binding.txtMore.text = "Less.."
+                binding.linearMore.visibility = View.VISIBLE
+            }else{
+                moreFieldsStatus = false
+                binding.txtMore.text = "More.."
+                binding.linearMore.visibility = View.GONE
+            }
+        }
 
     }
 
@@ -247,8 +263,8 @@ class AddMembersActivity : AppCompatActivity() {
             ViewController.customToast(applicationContext, "Enter Mobile Number")
             return
         }
-        if (presentAddress.isEmpty()) {
-            ViewController.customToast(applicationContext, "Enter Address")
+        if (Business.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Business Name")
             return
         }
         if (selectedState.isEmpty()) {
@@ -257,6 +273,14 @@ class AddMembersActivity : AppCompatActivity() {
         }
         if (selectedConstituency.isEmpty()) {
             ViewController.customToast(applicationContext, "Select Constituency")
+            return
+        }
+        if (mandal.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Mandal Name")
+            return
+        }
+        if (village.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Village Name")
             return
         }
         if (password.isEmpty()) {

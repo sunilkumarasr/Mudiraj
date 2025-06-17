@@ -42,11 +42,18 @@ object RetrofitClient {
 
 object RequestInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val request = chain.request()
-        val requestBuilder = request.newBuilder()
-            .header("Content-Type", "application/json")
-        // Uncomment and set your API key if needed
-//        .header("api_key", "MF_7s736V2J2iB549214s40i3Lz77I0297")
-        return chain.proceed(requestBuilder.build())
+        val originalRequest = chain.request()
+        val builder = originalRequest.newBuilder()
+
+        // Don't set Content-Type manually for multipart/form-data
+        if (originalRequest.body?.contentType()?.subtype != "form-data") {
+            builder.header("Content-Type", "application/json")
+        }
+
+        // Add User-Agent and other headers that don't conflict
+        builder.header("User-Agent", "Mozilla/5.0 (AndroidApp)")
+        builder.header("Accept", "*/*")
+
+        return chain.proceed(builder.build())
     }
 }

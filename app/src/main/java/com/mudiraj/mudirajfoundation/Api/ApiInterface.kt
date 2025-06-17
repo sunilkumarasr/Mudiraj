@@ -16,13 +16,18 @@ import com.mudiraj.mudirajfoundation.Models.RegisterModel
 import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.Models.TermsAndConditionsModel
 import com.mudiraj.mudirajfoundation.Models.TotalUsersModel
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.POST
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Header
+import retrofit2.http.Headers
+import retrofit2.http.Multipart
+import retrofit2.http.Part
 
 interface ApiInterface {
-
 
     @FormUrlEncoded
     @POST("registration")
@@ -176,7 +181,6 @@ interface ApiInterface {
         @Field("state_id") state_id: String
     ): Call<GalleryListModel>
 
-
     @FormUrlEncoded
     @POST("userbased_favorite")
     fun getFavouriteApi(
@@ -184,11 +188,9 @@ interface ApiInterface {
         @Field("customer_id") customerId: String
     ): Call<FavouriteModel>
 
-
     @FormUrlEncoded
     @POST("update_profile")
     fun updateProfileApi(
-        @Field("api_key") apiKey: String,
         @Field("user_id") user_id: String,
         @Field("email") emailId: String,
         @Field("phone") mobileNumber: String,
@@ -225,9 +227,8 @@ interface ApiInterface {
         @Field("marital_status") marital_status: String,
         @Field("blood_group") blood_group: String,
         @Field("two_wheeler") two_wheeler: String,
-        @Field("four_wheeler") four_wheeler: String,
+        @Field("four_wheeler") four_wheeler: String
     ): Call<ProfileModel>
-
 
     @FormUrlEncoded
     @POST("terms")

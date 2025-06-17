@@ -1,7 +1,18 @@
 package com.mudiraj.mudirajfoundation.Activitys
 
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.READ_MEDIA_IMAGES
+import android.Manifest.permission.READ_MEDIA_VIDEO
+import android.Manifest.permission.READ_MEDIA_VISUAL_USER_SELECTED
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +20,14 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.mudiraj.mudirajfoundation.Api.RetrofitClient
 import com.mudiraj.mudirajfoundation.Config.Preferences
 import com.mudiraj.mudirajfoundation.Config.ViewController
@@ -20,9 +38,17 @@ import com.mudiraj.mudirajfoundation.Models.StateListResponse
 import com.mudiraj.mudirajfoundation.Models.StateModel
 import com.mudiraj.mudirajfoundation.R
 import com.mudiraj.mudirajfoundation.databinding.ActivityEditProfileBinding
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
+import java.io.FileOutputStream
 
 class EditProfileActivity : AppCompatActivity() {
 
@@ -36,7 +62,58 @@ class EditProfileActivity : AppCompatActivity() {
     var selectedState: String = ""
     var selectedConstituency: String = ""
 
+
+    //single image selection
+    private val IMAGE_PICK_CODE = 1000
+    private var selectedImageUri: Uri? = null
+    val requestPermissions = registerForActivityResult(RequestMultiplePermissions()) { results ->
+        var permission = false;
+        if (
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            (
+                    ContextCompat.checkSelfPermission(
+                        applicationContext,
+                        READ_MEDIA_IMAGES
+                    ) == PERMISSION_GRANTED ||
+                            ContextCompat.checkSelfPermission(
+                                applicationContext,
+                                READ_MEDIA_VIDEO
+                            ) == PERMISSION_GRANTED
+                    )
+        ) {
+            permission = true
+            // Full access on Android 13 (API level 33) or higher
+        } else if (
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE &&
+            ContextCompat.checkSelfPermission(
+                applicationContext,
+                READ_MEDIA_VISUAL_USER_SELECTED
+            ) == PERMISSION_GRANTED
+        ) {
+            permission = true
+            // Partial access on Android 14 (API level 34) or higher
+        } else if (ContextCompat.checkSelfPermission(
+                applicationContext,
+                READ_EXTERNAL_STORAGE
+            ) == PERMISSION_GRANTED
+        ) {
+            permission = true
+            // Full access up to Android 12 (API level 32)
+        } else {
+            permission = false
+        }
+        if (permission) {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, IMAGE_PICK_CODE)
+        } else {
+            ViewController.showToast(this@EditProfileActivity, "Accept permissions")
+        }
+    }
+    var imageType: String = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -139,6 +216,16 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }
 
+        binding.relativeImage.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                requestPermissions.launch(arrayOf(READ_MEDIA_IMAGES, READ_MEDIA_VIDEO))
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                requestPermissions.launch(arrayOf(READ_MEDIA_IMAGES, READ_MEDIA_VIDEO))
+            } else {
+                requestPermissions.launch(arrayOf(READ_EXTERNAL_STORAGE))
+            }
+            imageType = "single"
+        }
 
         //gender
         GenderSelection()
@@ -198,8 +285,8 @@ class EditProfileActivity : AppCompatActivity() {
             ViewController.customToast(applicationContext, "Enter Mobile Number")
             return
         }
-        if (presentAddress.isEmpty()) {
-            ViewController.customToast(applicationContext, "Enter Address")
+        if (Business.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter Business")
             return
         }
         if (selectedState.isEmpty()) {
@@ -210,6 +297,14 @@ class EditProfileActivity : AppCompatActivity() {
             ViewController.customToast(applicationContext, "Select Constituency")
             return
         }
+        if (mandal.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter mandal")
+            return
+        }
+        if (village.isEmpty()) {
+            ViewController.customToast(applicationContext, "Enter village")
+            return
+        }
 
         if (!ViewController.validateEmail(email)) {
             ViewController.customToast(applicationContext, "Enter Valid Email")
@@ -218,48 +313,47 @@ class EditProfileActivity : AppCompatActivity() {
         } else {
             ViewController.showLoading(this@EditProfileActivity)
 
+
             val apiServices = RetrofitClient.apiInterface
-            val call =
-                apiServices.updateProfileApi(
-                    getString(R.string.api_key),
-                    userId,
-                    email,
-                    mobile,
-                    name,
-                    DOB,
-                    careOf,
-                    genderName,
-                    presentAddress,
-                    Business,
-                    selectedConstituency,
-                    selectedState,
-                    mandal,
-                    ward,
-                    pincode,
-                    ocuppation,
-                    company,
-                    designation,
-                    location,
-                    permanentAddress,
-                    FBProfile,
-                    FBFollowers,
-                    InstaProfile,
-                    InstaFollowers,
-                    TwitterProfile,
-                    TwitterFollowers,
-                    LinkedIn,
-                    YoutubeChannel,
-                    YoutubeFollower,
-                    WhatsAppNumber,
-                    Telegram,
-                    Skills,
-                    Volunteer,
-                    Organizations,
-                    MaritalStatus,
-                    BloodGroup,
-                    TwoWheeler,
-                    FourWheeler,
-                )
+            val call = apiServices.updateProfileApi(
+                userId,
+                email,
+                mobile,
+                name,
+                DOB,
+                careOf,
+                genderName,
+                presentAddress,
+                Business,
+                selectedConstituency,
+                selectedState,
+                mandal,
+                ward,
+                pincode,
+                ocuppation,
+                company,
+                designation,
+                location,
+                permanentAddress,
+                FBProfile,
+                FBFollowers,
+                InstaProfile,
+                InstaFollowers,
+                TwitterProfile,
+                TwitterFollowers,
+                LinkedIn,
+                YoutubeChannel,
+                YoutubeFollower,
+                WhatsAppNumber,
+                Telegram,
+                Skills,
+                Volunteer,
+                Organizations,
+                MaritalStatus,
+                BloodGroup,
+                TwoWheeler,
+                FourWheeler
+            )
             call.enqueue(object : Callback<ProfileModel> {
                 override fun onResponse(
                     call: Call<ProfileModel>,
@@ -340,6 +434,26 @@ class EditProfileActivity : AppCompatActivity() {
 
         }
     }
+
+    //image
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        //single image selection
+
+        if (imageType.equals("single")){
+            //single image selection
+            if (resultCode == Activity.RESULT_OK && data != null) {
+                selectedImageUri = data.data!!
+                binding.profileImg.setImageURI(selectedImageUri)
+            }
+        }
+    }
+    private fun coverEmptyImagePart(): MultipartBody.Part {
+        // Create an empty RequestBody
+        val requestFile = RequestBody.create(MultipartBody.FORM, ByteArray(0))
+        return MultipartBody.Part.createFormData("image", "", requestFile)
+    }
+
 
 
     private fun GenderSelection() {

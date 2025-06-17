@@ -108,7 +108,6 @@ class HomeFragment : Fragment() {
             }
         })
 
-
         //news
         handlerNews = Handler(Looper.myLooper()!!)
         setUpTransformerNews()
@@ -119,7 +118,6 @@ class HomeFragment : Fragment() {
                 handlerNews.postDelayed(runnableNews , 4000)
             }
         })
-
 
         binding.linearWhatsApp.setOnClickListener {
             val phoneNumber = "9493409050"
@@ -135,7 +133,6 @@ class HomeFragment : Fragment() {
                 // WhatsApp not installed, handle this case
                 Toast.makeText(requireActivity(), "WhatsApp not installed on this device", Toast.LENGTH_SHORT).show()
             }
-
         }
 
         binding.linearYoutube.setOnClickListener {
